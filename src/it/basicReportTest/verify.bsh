@@ -1,0 +1,14 @@
+import java.io.*;
+import java.util.*;
+
+
+
+// First we check if the resulted build.log output exists.
+File file = new File( basedir, "build.log" );
+if ( !file.exists() )
+{
+    throw new FileNotFoundException( "Could not find the build.log file.: " + file );
+}
+
+
+return result;

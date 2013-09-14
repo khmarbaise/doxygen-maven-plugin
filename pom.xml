@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.soebes.maven.plugins.dmg</groupId>
+    <artifactId>doxygen-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
+    <version>1.0.2-SNAPSHOT</version>
+
+    <name>Doxygen Maven Plugin</name>
+    <description>The Doxygen Maven Plugin provides the ability to generate Doxygen documentation
+from various source files.</description>
+    <organization>
+        <name>SoftwareEntwicklung Beratung Schulung</name>
+        <url>http://www.soebes.com</url>
+    </organization>
+
+    <url>http://www.soebes.com</url>
+    <inceptionYear>2010</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <prerequisites>
+        <maven>2.0.10</maven>
+    </prerequisites>
+
+    <issueManagement>
+        <system>default</system>
+        <url>http://supose.org/projects/mavendoxygen/issues/</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:svn:http://svn.serverix.gallien.de.home/dmg/</connection>
+        <developerConnection>scm:svn:http://svn.serverix.de.home/dmg/trunk</developerConnection>
+        <url>http://supose.org/repositories/show/mavendoxygen</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>kama</id>
+            <name>Karl Heinz Marbaise</name>
+            <email>khmarbaise@soebes.com</email>
+            <url>http://blog.soebes.de</url>
+            <organization>SoftwareEntwicklung Beratung Schulung</organization>
+            <organizationUrl>http://www.soebes.de</organizationUrl>
+            <roles>
+                <role>lead</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>ossrh-staging</id>
+            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh-snapshots</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <site>
+            <id>site.supose.org</id>
+            <url>scp://minden205.server4you.de:/usr/local/vhosts/site.supose.org/doxygen-maven-plugin</url>
+        </site>
+    </distributionManagement>
+
+    <properties>
+        <!-- All resources will be UTF-8 encoded. -->
+        <maven-license-plugin.version>1.9.0</maven-license-plugin.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <mailingLists>
+        <mailingList>
+            <name>Maven Users List</name>
+            <subscribe>users-subscribe@maven.apache.org</subscribe>
+            <unsubscribe>users-unsubscribe@maven.apache.org</unsubscribe>
+            <post>users@maven.apache.org</post>
+            <archive>http://mail-archives.apache.org/mod_mbox/maven-users</archive>
+            <otherArchives>
+                <otherArchive>http://www.nabble.com/Maven---Users-f178.html</otherArchive>
+            </otherArchives>
+        </mailingList>
+    </mailingLists>
+    <dependencies>
+        <!-- Maven Reporting -->
+        <dependency>
+            <groupId>org.apache.maven.reporting</groupId>
+            <artifactId>maven-reporting-api</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.reporting</groupId>
+            <artifactId>maven-reporting-impl</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-toolchain</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-site-renderer</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-sink-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <scope>test</scope>
+            <classifier>jdk15</classifier>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-5</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${basedir}/src/main/assembly/bin.xml</descriptor>
+                        <descriptor>${basedir}/src/main/assembly/src.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-docck-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>2.5.1</version>
+                <executions>
+                    <execution>
+                        <id>generated-helpmojo</id>
+                        <goals>
+                            <goal>helpmojo</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <version>${maven-license-plugin.version}</version>
+                <configuration>
+                    <header>src/main/etc/header.txt</header>
+                    <quiet>false</quiet>
+                    <aggregate>true</aggregate>
+                    <failIfMissing>false</failIfMissing>
+                    <includes>
+                        <include>src/**</include>
+                    </includes>
+                    <excludes>
+                        <exclude>src/main/resources/**</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                        <exclude>target/**</exclude>
+                    </excludes>
+                    <properties>
+                        <year>2010, 2011</year>
+                        <email>sapm@soebes.de</email>
+                    </properties>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changes-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <issueLinkTemplatePerSystem>
+                        <default>http://www.supose.org/issues/show/%ISSUE%</default>
+                    </issueLinkTemplatePerSystem>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>changes-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <reportsDirectory>target/surefire-reports</reportsDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <quiet>true</quiet>
+                    <show>private</show>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <targetJdk>1.5</targetJdk>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.1.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependencies</report>
+                            <report>project-team</report>
+                            <report>mailing-list</report>
+                            <report>issue-tracking</report>
+                            <report>license</report>
+                            <report>scm</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <!-- Profile definition for running integration-test running the integration
+        tests with the following command line: mvn -Prun-its integration-test -->
+    <profiles>
+        <profile>
+            <id>run-its</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-invoker-plugin</artifactId>
+                        <version>1.5</version>
+                        <configuration>
+                            <debug>false</debug>
+                            <projectsDirectory>src/it</projectsDirectory>
+                            <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+                            <pomIncludes>
+                                <pomInclude>basicTest/pom.xml</pomInclude>
+                                <pomInclude>basicConfigurationTest/pom.xml</pomInclude>
+                                <pomInclude>basicReportTest/pom.xml</pomInclude>
+                            </pomIncludes>
+                            <preBuildHookScript>setup</preBuildHookScript>
+                            <postBuildHookScript>verify</postBuildHookScript>
+                            <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+                            <settingsFile>src/it/settings.xml</settingsFile>
+                            <goals>
+                                <goal>clean</goal>
+                                <goal>site</goal>
+                            </goals>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>integration-test</id>
+                                <goals>
+                                    <goal>install</goal>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.0-alpha-4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

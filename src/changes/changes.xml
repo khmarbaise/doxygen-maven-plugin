@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+
+    The Doxygen Maven Plugin (dmp)
+
+    Copyright (c) 2010, 2011 by SoftwareEntwicklung Beratung Schulung (SoEBeS)
+    Copyright (c) 2010, 2011 by Karl Heinz Marbaise
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<document>
+    <properties>
+        <title>Feature Additions, Fixes, and Updates</title>
+    </properties>
+    <body>
+        <release
+            version="1.0.2"
+            date="07.01.2011"
+            desc="Bug Fix Release">
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix">Fixed problem with license header in usage.apt.vm</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="339">Updated license header in all files.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="286">Fixed SCM connection.</action>
+        </release>
+        <release
+            version="1.0.1"
+            date="12.02.2010"
+            desc="Bug Fix Release for central preaparation">
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="287">Missing SCM URL added.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="285">Fixed groupId and package names.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="add"
+                issue="284">Added distributionManagement for OSS Release.
+            </action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="add"
+                issue="268">Added Signing of release artifacts.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="263">Added Developer to POM.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="add"
+                issue="261">Added summary report.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="256">Added distributionManagement part into POM.
+            </action>
+        </release>
+        <release
+            version="1.0"
+            date="15.01.2010"
+            desc="First Release">
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="255">Fixed SCM URL.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="253">Changes OUTPUT_DIRECTORY from STRING to
+                STRING_QUOTED to handle folders with spaces correct.
+            </action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="254">Fixed URL to Issue tracking system.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="252">Currently added the Maven Users list.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="update"
+                issue="251">Enhanced the documentation.</action>
+        </release>
+    </body>
+</document>

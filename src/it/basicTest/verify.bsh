@@ -1,0 +1,190 @@
+import java.io.*;
+import java.util.*;
+
+
+
+// First we check if the resulted build.log output exists.
+File file = new File( basedir, "build.log" );
+if ( !file.exists() )
+{
+    throw new FileNotFoundException( "Could not find the build.log file.: " + file );
+}
+
+String[] checkedLines = {
+	"Searching for example files...",
+	"Searching for images...",
+	"Searching for dot files...",
+	"Searching for files to exclude",
+	"Searching for files to process...",
+	"Searching for files in directory ",
+	"Reading and parsing tag files",
+	"Building group list...",
+	"Building directory list...",
+	"Building namespace list...",
+	"Building file list...",
+	"Searching for included using directives...",
+	"Building class list...",
+	"Associating documentation with classes...",
+	"Computing nesting relations for classes...",
+	"Searching for members imported via using declarations...",
+	"Building example list...",
+	"Searching for enumerations...",
+	"Searching for documented typedefs...",
+	"Searching for documented variables...",
+	"Building member list...",
+	"Searching for friends...",
+	"Searching for documented defines...",
+	"Computing class inheritance relations...",
+	"Computing class usage relations...",
+	"Flushing cached template relations that have become invalid...",
+	"Creating members for template instances...",
+	"Computing class relations...",
+	"Add enum values to enums...",
+	"Searching for member function documentation...",
+	"Building page list...",
+	"Search for main page...",
+	"Computing page relations...",
+	"Determining the scope of groups...",
+	"Sorting lists...",
+	"Freeing entry tree",
+	"Determining which enums are documented",
+	"Computing member relations...",
+	"Building full member lists recursively...",
+	"Adding members to member groups.",
+	"Computing member references...",
+	"Inheriting documentation...",
+	"Generating disk names...",
+	"Adding source references...",
+	"Computing dependencies between directories...",
+	"Counting data structures...",
+	"Resolving user defined references...",
+	"Finding anchors and sections in the documentation...",
+	"Combining using relations...",
+	"Adding members to index pages...",
+	"Generating style sheet...",
+	"Generating index page...",
+	"Generating page index...",
+	"Generating example documentation...",
+	"Generating file sources...",
+	"Generating file documentation...",
+	"Generating page documentation...",
+	"Generating group documentation...",
+	"Generating group index...",
+	"Generating class documentation...",
+	"Generating annotated compound index...",
+	"Generating alphabetical compound index...",
+	"Generating hierarchical class index...",
+	"Generating member index...",
+	"Generating namespace index...",
+	"Generating namespace member index...",
+	"Generating graph info page...",
+	"Generating directory documentation...",
+	"Generating file index...",
+	"Generating directory index...",
+	"Generating example index...",
+	"Generating file member index...",
+};
+
+Boolean[] checked = {
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+};
+
+//
+// Check if we find the following lines in the log file...
+try {
+        BufferedReader in = new BufferedReader(new FileReader(file));
+        String str;
+        while ((str = in.readLine()) != null) {
+        	for(int i=0; i<checkedLines.length; i++) {
+        		if (str.startsWith("[INFO] doxygen: " + checkedLines[i])) {
+        			checked[i] = true;
+        		}
+        	}
+        }
+        in.close();
+} catch (IOException e) {
+	throw e;
+}
+
+// Check to see if every line has occured in the log file.
+// if only one will not appear we will broke the integration test.
+boolean result = true;
+for(int i=0; i<checkedLines.length; i++) {
+	if (checked[i] == false) {
+		System.out.println("Unexpected content: " + checkedLines[i]);
+		result = false;
+	}
+}
+
+return result;
