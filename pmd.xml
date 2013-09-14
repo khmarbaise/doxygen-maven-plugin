@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.2" timestamp="2013-09-14T15:02:41.154">
+<file name="/Users/kama/ws-git/doxygen-maven-plugin/src/main/java/com/soebes/maven/plugins/dmg/AbstractDoxygenMojo.java">
+<violation beginline="137" endline="140" begincolumn="9" endcolumn="9" rule="EmptyCatchBlock" ruleset="Basic Rules" package="com.soebes.maven.plugins.dmg" class="AbstractDoxygenMojo" method="getToolchain" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>
