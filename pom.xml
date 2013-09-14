@@ -35,14 +35,14 @@ from various source files.</description>
     </prerequisites>
 
     <issueManagement>
-        <system>default</system>
-        <url>http://supose.org/projects/mavendoxygen/issues/</url>
+        <system>github</system>
+        <url>https://github.com/khmarbaise/doxygen-maven-plugin/issues</url>
     </issueManagement>
 
     <scm>
-        <connection>scm:svn:http://svn.serverix.gallien.de.home/dmg/</connection>
-        <developerConnection>scm:svn:http://svn.serverix.de.home/dmg/trunk</developerConnection>
-        <url>http://supose.org/repositories/show/mavendoxygen</url>
+        <connection>scm:git:git@github.com:khmarbaise/doxygen-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:khmarbaise/doxygen-maven-plugin.git</developerConnection>
+        <url>https://github.com/khmarbaise/doxygen-maven-plugin/</url>
     </scm>
 
     <developers>
