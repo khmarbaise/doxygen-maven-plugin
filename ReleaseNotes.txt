@@ -1,0 +1,14 @@
+Release 1.1.0 (changed from any version before)
+
+User visible changes:
+  - Changed groupId of the plugin from com.soebes.maven.plugins.dmg
+    into com.soebes.maven.plugins
+
+    So you have to use the following coordinates for your builds in Maven:
+
+    <plugin>
+      <groupId>com.soebes.maven.plugins</groupId>
+      <artifactId>doxygen-maven-plugin</artifactId>
+      <version>1.1.0</version>
+    </plugin>
+
