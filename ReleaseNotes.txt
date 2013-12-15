@@ -1,4 +1,4 @@
-Release 1.1.0 (changed from any version before)
+Release 1.1.0 (changes from any version before)
 
 User visible changes:
   - Changed groupId of the plugin from com.soebes.maven.plugins.dmg
