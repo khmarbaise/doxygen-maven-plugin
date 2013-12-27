@@ -44,7 +44,6 @@
 					<haveDot>false</haveDot>
 					<quiet>false</quiet>
 					<projectName>This is a Test Project (basicReportTest)</projectName>
-                    <executable>/Applications/Doxygen.app/Contents/Resources/doxygen</executable>
 				</configuration>
 			</plugin>
 		</plugins>

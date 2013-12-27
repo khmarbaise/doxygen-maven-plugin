@@ -41,8 +41,6 @@
 					<repeatBrief>true</repeatBrief>
 					<abbreviateBrief>true</abbreviateBrief>
 					<alwaysDetailedSec>true</alwaysDetailedSec>
-                    <executable>/Applications/Doxygen.app/Contents/Resources/doxygen</executable>
-
                 </configuration>
 			</plugin>
 		</plugins>
