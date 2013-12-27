@@ -24,6 +24,7 @@ package com.soebes.maven.plugins.dmg;
 import java.io.File;
 
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 /**
  * This class contains all configurable parameters for the doxygen call. These
@@ -38,8 +39,8 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * This defines which file will be used as Doxygen configuration file
      * instead of creating one.
      * 
-     * @parameter expression="${doxygen.configurationFile}"
      */
+    @Parameter(property = "doxygen.configurationFile")
     private File configurationFile;
 
     /**
@@ -49,26 +50,26 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * libiconv (or the iconv built into libc) for the transcoding. See
      * http://www.gnu.org/software/libiconv for the list of possible encodings.
      * 
-     * @parameter expression="${doxygen.doxyfileEncoding}" default-value="UTF-8"
      */
+    @Parameter(property="doxygen.doxyfileEncoding", defaultValue="UTF-8")
     private String doxyfileEncoding;
 
     /**
      * The PROJECT_NAME tag is a single word (or a sequence of words surrounded
      * by quotes) that should identify the project.
-     * 
-     * @parameter expression="${doxygen.projectName}"
-     *            default-value="MIGRATION.PARENT"
+     *
      */
+    @Parameter(property="doxygen.projectName", defaultValue="MIGRATION.PARENT")
     private String projectName;
 
     /**
      * The PROJECT_NUMBER tag can be used to enter a project or revision number.
      * This could be handy for archiving the generated documentation or if some
      * version control system is used.
-     * 
-     * @parameter expression="${doxygen.projectNumber}"
+     *
+     * @Parameter(property="doxygen.projectNumber")
      */
+    @Parameter(property = "doxygen.projectNumber")
     private String projectNumber;
 
     /**
@@ -78,9 +79,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * Enabling this option can be useful when feeding doxygen a huge amount of
      * source files, where putting all generated files in the same directory
      * would otherwise cause performance problems for the file system.
-     * 
-     * @parameter expression="${doxygen.createSubdirs}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.createSubdirs", defaultValue="false")
     private boolean createSubdirs;
 
     /**
@@ -94,9 +95,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * Korean-en, Lithuanian, Norwegian, Macedonian, Persian, Polish,
      * Portuguese, Romanian, Russian, Serbian, Serbian-Cyrilic, Slovak, Slovene,
      * Spanish, Swedish, and Ukrainian.
-     * 
-     * @parameter expression="${doxygen.outputLanguage}" default-value="English"
+     *
      */
+    @Parameter(property="doxygen.outputLanguage", defaultValue="English")
     private String outputLanguage;
 
     /**
@@ -104,9 +105,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * include brief member descriptions after the members that are listed in
      * the file and class documentation (similar to JavaDoc). Set to NO to
      * disable this.
-     * 
-     * @parameter expression="${doxygen.briefMemberDesc}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.briefMemberDesc", defaultValue="true")
     private boolean briefMemberDesc;
 
     /**
@@ -114,9 +115,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the brief description of a member or function before the detailed
      * description. Note: if both HIDE_UNDOC_MEMBERS and BRIEF_MEMBER_DESC are
      * set to NO, the brief descriptions will be completely suppressed.
-     * 
-     * @parameter expression="${doxygen.repeatBrief}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.repeatBrief", defaultValue="true")
     private boolean repeatBrief;
 
     /**
@@ -129,19 +130,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * automatically replaced with the name of the entity): "The $name class"
      * "The $name widget" "The $name file" "is" "provides" "specifies"
      * "contains" "represents" "a" "an" "the"
-     * 
-     * @parameter expression="${doxygen.abbreviateBrief}"
+     *
      */
+    @Parameter(property="doxygen.abbreviateBrief")
     private String abbreviateBrief;
 
     /**
      * If the ALWAYS_DETAILED_SEC and REPEAT_BRIEF tags are both set to YES then
      * Doxygen will generate a detailed section even if there is only a brief
      * description.
-     * 
-     * @parameter expression="${doxygen.alwaysDetailedSec}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.alwaysDetailedSec", defaultValue="false")
     private boolean alwaysDetailedSec;
 
     /**
@@ -149,19 +149,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * inherited members of a class in the documentation of that class as if
      * those members were ordinary class members. Constructors, destructors and
      * assignment operators of the base classes will not be shown.
-     * 
-     * @parameter expression="${doxygen.inlineInheritedMemb}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.inlineInheritedMemb", defaultValue="false")
     private boolean inlineInheritedMemb;
 
     /**
      * If the FULL_PATH_NAMES tag is set to YES then Doxygen will prepend the
      * full path before files name in the file list and in the header files. If
      * set to NO the shortest path that makes the file name unique will be used.
-     * 
-     * @parameter expression="${doxygen.fullPathNames}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.fullPathNames", defaultValue="true")
     private boolean fullPathNames;
 
     /**
@@ -171,9 +170,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * The tag can be used to show relative paths in the file list. If left
      * blank the directory from which doxygen is run is used as the path to
      * strip.
-     * 
-     * @parameter expression="${doxygen.stripFromPath}"
+     *
      */
+    @Parameter(property="doxygen.stripFromPath")
     private String stripFromPath;
 
     /**
@@ -183,18 +182,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * blank only the name of the header file containing the class definition is
      * used. Otherwise one should specify the include paths that are normally
      * passed to the compiler using the -I flag.
-     * 
-     * @parameter expression="${doxygen.stripFromIncPath}"
+     *
      */
+    @Parameter(property="doxygen.stripFromIncPath")
     private String stripFromIncPath;
 
     /**
      * If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter
      * (but less readable) file names. This can be useful is your file systems
      * doesn't support long names like on DOS, Mac, or CD-ROM.
-     * 
-     * @parameter expression="${doxygen.shortNames}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.shortNames", defaultValue="false")
     private boolean shortNames;
 
     /**
@@ -203,9 +202,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * brief description. If set to NO, the JavaDoc comments will behave just
      * like regular Qt-style comments (thus requiring an explicit @brief command
      * for a brief description.)
-     * 
-     * @parameter expression="${doxygen.javadocAutobrief}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.javadocAutobrief", defaultValue="false")
     private boolean javadocAutobrief;
 
     /**
@@ -214,9 +213,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * description. If set to NO, the comments will behave just like regular
      * Qt-style comments (thus requiring an explicit \brief command for a brief
      * description.)
-     * 
-     * @parameter expression="${doxygen.qtAutobrief}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.qtAutobrief", defaultValue="false")
     private boolean qtAutobrief;
 
     /**
@@ -225,37 +224,35 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * comments) as a brief description. This used to be the default behaviour.
      * The new default is to treat a multi-line C++ comment block as a detailed
      * description. Set this tag to YES if you prefer the old behaviour instead.
-     * 
-     * @parameter expression="${doxygen.multilineCppIsBrief}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.multilineCppIsBrief", defaultValue="false")
     private boolean multilineCppIsBrief;
 
     /**
      * If the INHERIT_DOCS tag is set to YES (the default) then an undocumented
      * member inherits the documentation from any documented member that it
      * re-implements.
-     * 
-     * @parameter expression="${doxygen.inheritDocs}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.inheritDocs", defaultValue="true")
     private boolean inheritDocs;
 
     /**
      * If the SEPARATE_MEMBER_PAGES tag is set to YES, then doxygen will produce
      * a new page for each member. If set to NO, the documentation of a member
      * will be part of the file/class/namespace that contains it.
-     * 
-     * @parameter expression="${doxygen.separateMemberPages}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.separateMemberPages", defaultValue="false")
     private boolean separateMemberPages;
 
     /**
      * The TAB_SIZE tag can be used to set the number of spaces in a tab.
      * Doxygen uses this value to replace tabs by spaces in code fragments.
-     * 
-     * @parameter expression="${doxygen.tabSize}" default-value="8"
+     *
      */
+    @Parameter(property="doxygen.tabSize", defaultValue="8")
     private Integer tabSize;
 
     /**
@@ -265,9 +262,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * command \sideeffect (or @sideeffect) in the documentation, which will
      * result in a user-defined paragraph with heading "Side Effects:". You can
      * put \n's in the value part of an alias to insert newlines.
-     * 
-     * @parameter expression="${doxygen.aliases}"
+     *
      */
+    @Parameter(property="doxygen.aliases")
     private String aliases;
 
     /**
@@ -275,10 +272,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * sources only. Doxygen will then generate output that is more tailored for
      * C. For instance, some of the names that are used will be different. The
      * list of all members will be omitted, etc.
-     * 
-     * @parameter expression="${doxygen.optimizeOutputForC}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.optimizeOutputForC", defaultValue="false")
     private boolean optimizeOutputForC;
 
     /**
@@ -286,29 +282,26 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * sources only. Doxygen will then generate output that is more tailored for
      * Java. For instance, namespaces will be presented as packages, qualified
      * scopes will look different, etc.
-     * 
-     * @parameter expression="${doxygen.optimizeOutputJava}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.optimizeOutputJava", defaultValue="false")
     private boolean optimizeOutputJava;
 
     /**
      * Set the OPTIMIZE_FOR_FORTRAN tag to YES if your project consists of
      * Fortran sources only. Doxygen will then generate output that is more
      * tailored for Fortran.
-     * 
-     * @parameter expression="${doxygen.optimizeForFortran}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.optimizeForFortran", defaultValue="false")
     private boolean optimizeForFortran;
 
     /**
      * Set the OPTIMIZE_OUTPUT_VHDL tag to YES if your project consists of VHDL
      * sources. Doxygen will then generate output that is tailored for VHDL.
-     * 
-     * @parameter expression="${doxygen.optimizeOutputVhdl}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.optimizeOutputVhdl", defaultValue="false")
     private boolean optimizeOutputVhdl;
 
     /**
@@ -319,17 +312,17 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * func(std::string); v.s. func(std::string) {}). This also make the
      * inheritance and collaboration diagrams that involve STL classes more
      * complete and accurate.
-     * 
-     * @parameter expression="${doxygen.builtinStlSupport}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.builtinStlSupport", defaultValue="true")
     private boolean builtinStlSupport;
 
     /**
      * If you use Microsoft's C++/CLI language, you should set this option to
      * YES to enable parsing support.
-     * 
-     * @parameter expression="${doxygen.cppCliSupport}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.cppCliSupport", defaultValue="false")
     private boolean cppCliSupport;
 
     /**
@@ -337,9 +330,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * only. Doxygen will parse them like normal C++ but will assume all classes
      * use public instead of private inheritance when no explicit protection
      * keyword is present.
-     * 
-     * @parameter expression="${doxygen.sipSupport}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.sipSupport", defaultValue="false")
     private boolean sipSupport;
 
     /**
@@ -349,10 +342,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * property in the documentation. This will only work if the methods are
      * indeed getting or setting a simple type. If this is not the case, or you
      * want to show the methods anyway, you should set this option to NO.
-     * 
-     * @parameter expression="${doxygen.idlPropertySupport}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.idlPropertySupport", defaultValue="true")
     private boolean idlPropertySupport;
 
     /**
@@ -361,10 +353,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * documentation of the first member in the group (if any) for the other
      * members of the group. By default all members of a group must be
      * documented explicitly.
-     * 
-     * @parameter expression="${doxygen.distributeGroupDoc}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.distributeGroupDoc", defaultValue="false")
     private boolean distributeGroupDoc;
 
     /**
@@ -373,9 +364,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * a subgroup of that type (e.g. under the Public Functions section). Set it
      * to NO to prevent subgrouping. Alternatively, this can be done per class
      * using the \nosubgrouping command.
-     * 
-     * @parameter expression="${doxygen.subgrouping}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.subgrouping", defaultValue="true")
     private boolean subgrouping;
 
     /**
@@ -387,10 +378,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * named TypeS. This can typically be useful for C code in case the coding
      * convention dictates that all compound types are typedef'ed and only the
      * typedef is referenced, never the tag name.
-     * 
-     * @parameter expression="${doxygen.typedefHidesStruct}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.typedefHidesStruct", defaultValue="false")
     private boolean typedefHidesStruct;
 
     /**
@@ -407,9 +397,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * memory usage. The cache size is given by this formula:
      * 2^(16+SYMBOL_CACHE_SIZE). The valid range is 0..9, the default is 0,
      * corresponding to a cache size of 2^16 = 65536 symbols
-     * 
-     * @parameter expression="${doxygen.symbolCacheSize}" default-value="0"
+     *
      */
+    @Parameter(property="doxygen.symbolCacheSize", defaultValue="0")
     private Integer symbolCacheSize;
 
     /**
@@ -417,35 +407,34 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * documentation are documented, even if no documentation was available.
      * Private class members and static file members will be hidden unless the
      * EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
-     * 
-     * @parameter expression="${doxygen.extractAll}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.extractAll", defaultValue="false")
     private boolean extractAll;
 
     /**
      * If the EXTRACT_PRIVATE tag is set to YES all private members of a class
      * will be included in the documentation.
-     * 
-     * @parameter expression="${doxygen.extractPrivate}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.extractPrivate", defaultValue="false")
     private boolean extractPrivate;
 
     /**
      * If the EXTRACT_STATIC tag is set to YES all static members of a file will
      * be included in the documentation.
-     * 
-     * @parameter expression="${doxygen.extractStatic}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.extractStatic", defaultValue="false")
     private boolean extractStatic;
 
     /**
      * If the EXTRACT_LOCAL_CLASSES tag is set to YES classes (and structs)
      * defined locally in source files will be included in the documentation. If
      * set to NO only classes defined in header files are included.
-     * 
-     * @parameter expression="${doxygen.extractLocalClasses}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.extractLocalClasses", defaultValue="true")
     private boolean extractLocalClasses;
 
     /**
@@ -453,10 +442,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * methods, which are defined in the implementation section but not in the
      * interface are included in the documentation. If set to NO (the default)
      * only methods in the interface are included.
-     * 
-     * @parameter expression="${doxygen.extractLocalMethods}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.extractLocalMethods", defaultValue="false")
     private boolean extractLocalMethods;
 
     /**
@@ -465,10 +453,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * 'anonymous_namespace{file}', where file will be replaced with the base
      * name of the file that contains the anonymous namespace. By default
      * anonymous namespace are hidden.
-     * 
-     * @parameter expression="${doxygen.extractAnonNspaces}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.extractAnonNspaces", defaultValue="false")
     private boolean extractAnonNspaces;
 
     /**
@@ -477,9 +464,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * to NO (the default) these members will be included in the various
      * overviews, but no documentation section is generated. This option has no
      * effect if EXTRACT_ALL is enabled.
-     * 
-     * @parameter expression="${doxygen.hideUndocMembers}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.hideUndocMembers", defaultValue="false")
     private boolean hideUndocMembers;
 
     /**
@@ -487,19 +474,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * undocumented classes that are normally visible in the class hierarchy. If
      * set to NO (the default) these classes will be included in the various
      * overviews. This option has no effect if EXTRACT_ALL is enabled.
-     * 
-     * @parameter expression="${doxygen.hideUndocClasses}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.hideUndocClasses", defaultValue="false")
     private boolean hideUndocClasses;
 
     /**
      * If the HIDE_FRIEND_COMPOUNDS tag is set to YES, Doxygen will hide all
      * friend (class|struct|union) declarations. If set to NO (the default)
      * these declarations will be included in the documentation.
-     * 
-     * @parameter expression="${doxygen.hideFriendCompounds}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.hideFriendCompounds", defaultValue="false")
     private boolean hideFriendCompounds;
 
     /**
@@ -507,9 +493,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * documentation blocks found inside the body of a function. If set to NO
      * (the default) these blocks will be appended to the function's detailed
      * documentation block.
-     * 
-     * @parameter expression="${doxygen.hideInBodyDocs}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.hideInBodyDocs", defaultValue="false")
     private boolean hideInBodyDocs;
 
     /**
@@ -517,9 +503,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * \internal command is included. If the tag is set to NO (the default) then
      * the documentation will be excluded. Set it to YES to include the internal
      * documentation.
-     * 
-     * @parameter expression="${doxygen.internalDocs}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.internalDocs", defaultValue="false")
     private boolean internalDocs;
 
     /**
@@ -528,35 +514,35 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * also allowed. This is useful if you have classes or files whose names
      * only differ in case and if your file system supports case sensitive file
      * names. Windows and Mac users are advised to set this option to NO.
-     * 
-     * @parameter expression="${doxygen.caseSenseNames}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.caseSenseNames", defaultValue="true")
     private boolean caseSenseNames;
 
     /**
      * If the HIDE_SCOPE_NAMES tag is set to NO (the default) then Doxygen will
      * show members with their full class and namespace scopes in the
      * documentation. If set to YES the scope will be hidden.
-     * 
-     * @parameter expression="${doxygen.hideScopeNames}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.hideScopeNames", defaultValue="false")
     private boolean hideScopeNames;
 
     /**
      * If the SHOW_INCLUDE_FILES tag is set to YES (the default) then Doxygen
      * will put a list of the files that are included by a file in the
      * documentation of that file.
-     * 
-     * @parameter expression="${doxygen.showIncludeFiles}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.showIncludeFiles", defaultValue="true")
     private boolean showIncludeFiles;
 
     /**
      * If the INLINE_INFO tag is set to YES (the default) then a tag [inline] is
      * inserted in the documentation for inline members.
-     * 
-     * @parameter expression="${doxygen.inlineInfo}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.inlineInfo", defaultValue="true")
     private boolean inlineInfo;
 
     /**
@@ -564,9 +550,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * sort the (detailed) documentation of file and class members
      * alphabetically by member name. If set to NO the members will appear in
      * declaration order.
-     * 
-     * @parameter expression="${doxygen.sortMemberDocs}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.sortMemberDocs", defaultValue="true")
     private boolean sortMemberDocs;
 
     /**
@@ -574,18 +560,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * documentation of file, namespace and class members alphabetically by
      * member name. If set to NO (the default) the members will appear in
      * declaration order.
-     * 
-     * @parameter expression="${doxygen.sortBriefDocs}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.sortBriefDocs", defaultValue="false")
     private boolean sortBriefDocs;
 
     /**
      * If the SORT_GROUP_NAMES tag is set to YES then doxygen will sort the
      * hierarchy of group names into alphabetical order. If set to NO (the
      * default) the group names will appear in their defined order.
-     * 
-     * @parameter expression="${doxygen.sortGroupNames}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.sortGroupNames", defaultValue="false")
     private boolean sortGroupNames;
 
     /**
@@ -595,54 +581,53 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the namespace part. Note: This option is not very useful if
      * HIDE_SCOPE_NAMES is set to YES. Note: This option applies only to the
      * class list, not to the alphabetical list.
-     * 
-     * @parameter expression="${doxygen.sortByScopeName}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.sortByScopeName", defaultValue="false")
     private boolean sortByScopeName;
 
     /**
      * The GENERATE_TODOLIST tag can be used to enable (YES) or disable (NO) the
      * todo list. This list is created by putting \todo commands in the
      * documentation.
-     * 
-     * @parameter expression="${doxygen.generateTodolist}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.generateTodolist", defaultValue="true")
     private boolean generateTodolist;
 
     /**
      * The GENERATE_TESTLIST tag can be used to enable (YES) or disable (NO) the
      * test list. This list is created by putting \test commands in the
      * documentation.
-     * 
-     * @parameter expression="${doxygen.generateTestlist}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.generateTestlist", defaultValue="true")
     private boolean generateTestlist;
 
     /**
      * The GENERATE_BUGLIST tag can be used to enable (YES) or disable (NO) the
      * bug list. This list is created by putting \bug commands in the
      * documentation.
-     * 
-     * @parameter expression="${doxygen.generateBuglist}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.generateBuglist", defaultValue="true")
     private boolean generateBuglist;
 
     /**
      * The GENERATE_DEPRECATEDLIST tag can be used to enable (YES) or disable
      * (NO) the deprecated list. This list is created by putting \deprecated
      * commands in the documentation.
-     * 
-     * @parameter expression="${doxygen.generateDeprecatedlist}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.generateDeprecatedlist", defaultValue="true")
     private boolean generateDeprecatedlist;
 
     /**
      * The ENABLED_SECTIONS tag can be used to enable conditional documentation
      * sections, marked by \if sectionname ... \endif.
-     * 
-     * @parameter expression="${doxygen.enabledSections}"
+     *
      */
+    @Parameter(property="doxygen.enabledSections")
     private String enabledSections;
 
     /**
@@ -653,9 +638,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * The appearance of the initializer of individual variables and defines in
      * the documentation can be controlled using \showinitializer or
      * \hideinitializer command in the documentation regardless of this setting.
-     * 
-     * @parameter expression="${doxygen.maxInitializerLines}" default-value="30"
+     *
      */
+    @Parameter(property="doxygen.maxInitializerLines", defaultValue="30")
     private Integer maxInitializerLines;
 
     /**
@@ -663,36 +648,36 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * at the bottom of the documentation of classes and structs. If set to YES
      * the list will mention the files that were used to generate the
      * documentation.
-     * 
-     * @parameter expression="${doxygen.showUsedFiles}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.showUsedFiles", defaultValue="true")
     private boolean showUsedFiles;
 
     /**
      * If the sources in your project are distributed over multiple directories
      * then setting the SHOW_DIRECTORIES tag to YES will show the directory
      * hierarchy in the documentation. The default is NO.
-     * 
-     * @parameter expression="${doxygen.showDirectories}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.showDirectories", defaultValue="true")
     private boolean showDirectories;
 
     /**
      * Set the SHOW_FILES tag to NO to disable the generation of the Files page.
      * This will remove the Files entry from the Quick Index and from the Folder
      * Tree View (if specified). The default is YES.
-     * 
-     * @parameter expression="${doxygen.showFiles}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.showFiles", defaultValue="true")
     private boolean showFiles;
 
     /**
      * Set the SHOW_NAMESPACES tag to NO to disable the generation of the
      * Namespaces page. This will remove the Namespaces entry from the Quick
      * Index and from the Folder Tree View (if specified). The default is YES.
-     * 
-     * @parameter expression="${doxygen.showNamespaces}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.showNamespaces", defaultValue="true")
     private boolean showNamespaces;
 
     /**
@@ -704,9 +689,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * FILE_VERSION_FILTER tag, and &lt;input-file&gt; is the name of an input
      * file provided by doxygen. Whatever the program writes to standard output
      * is used as the file version. See the manual for examples.
-     * 
-     * @parameter expression="${doxygen.fileVersionFilter}"
+     *
      */
+    @Parameter(property="doxygen.fileVersionFilter")
     private String fileVersionFilter;
 
     /**
@@ -716,36 +701,35 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the layout file that represents doxygen's defaults, run doxygen with the
      * -l option. You can optionally specify a file name after the option, if
      * omitted DoxygenLayout.xml will be used as the name of the layout file.
-     * 
-     * @parameter expression="${doxygen.layoutFile}"
+     *
      */
+    @Parameter(property="doxygen.layoutFile")
     private String layoutFile;
 
     /**
      * The QUIET tag can be used to turn on/off the messages that are generated
      * by doxygen. Possible values are YES and NO. If left blank NO is used.
-     * 
-     * @parameter expression="${doxygen.quiet}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.quiet", defaultValue="true")
     private boolean quiet;
 
     /**
      * The WARNINGS tag can be used to turn on/off the warning messages that are
      * generated by doxygen. Possible values are YES and NO. If left blank NO is
      * used.
-     * 
-     * @parameter expression="${doxygen.warnings}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.warnings", defaultValue="true")
     private boolean warnings;
 
     /**
      * If WARN_IF_UNDOCUMENTED is set to YES, then doxygen will generate
      * warnings for undocumented members. If EXTRACT_ALL is set to YES then this
      * flag will automatically be disabled.
-     * 
-     * @parameter expression="${doxygen.warnIfUndocumented}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.warnIfUndocumented", defaultValue="true")
     private boolean warnIfUndocumented;
 
     /**
@@ -753,9 +737,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * potential errors in the documentation, such as not documenting some
      * parameters in a documented function, or documenting parameters that don't
      * exist or using markup commands wrongly.
-     * 
-     * @parameter expression="${doxygen.warnIfDocError}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.warnIfDocError", defaultValue="true")
     private boolean warnIfDocError;
 
     /**
@@ -764,9 +748,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * return value. If set to NO (the default) doxygen will only warn about
      * wrong or incomplete parameter documentation, but not about the absence of
      * documentation.
-     * 
-     * @parameter expression="${doxygen.warnNoParamdoc}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.warnNoParamdoc", defaultValue="true")
     private boolean warnNoParamdoc;
 
     /**
@@ -776,19 +760,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the warning originated and the warning text. Optionally the format may
      * contain $version, which will be replaced by the version of the file (if
      * it could be obtained via FILE_VERSION_FILTER)
-     * 
-     * @parameter expression="${doxygen.warnFormat}"
-     *            default-value=""$file:$line: $text""
+     *
      */
+    @Parameter(property="doxygen.warnFormat", defaultValue="\"$file:$line: $text\"")
     private String warnFormat;
 
     /**
      * The WARN_LOGFILE tag can be used to specify a file to which warning and
      * error messages should be written. If left blank the output is written to
      * stderr.
-     * 
-     * @parameter expression="${doxygen.warnLogfile}"
+     *
      */
+    @Parameter(property="doxygen.warnLogfile")
     private String warnLogfile;
 
     /**
@@ -796,9 +779,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * contain documented source files. You may enter file names like
      * "myfile.cpp" or directories like "/usr/src/myproject". Separate the files
      * or directories with spaces.
-     * 
-     * @parameter expression="${doxygen.input}"
+     *
      */
+    @Parameter(property="doxygen.input")
     private String input;
 
     /**
@@ -807,9 +790,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * which is also the default input encoding. Doxygen uses libiconv (or the
      * iconv built into libc) for the transcoding. See
      * http://www.gnu.org/software/libiconv for the list of possible encodings.
-     * 
-     * @parameter expression="${doxygen.inputEncoding}" default-value="UTF-8"
+     *
      */
+    @Parameter(property="doxygen.inputEncoding", defaultValue="UTF-8")
     private String inputEncoding;
 
     /**
@@ -819,19 +802,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * following patterns are tested: *.c *.cc *.cxx *.cpp *.c++ *.java *.ii
      * *.ixx *.ipp *.i++ *.inl *.h *.hh *.hxx *.hpp *.h++ *.idl *.odl *.cs *.php
      * *.php3 *.inc *.m *.mm *.py *.f90
-     * 
-     * @parameter expression="${doxygen.filePatterns}" default-value=
-     *            "*.doxygen *.doxy *.cpp *.cxx *.hpp *.hxx *.ipp *.ixx *.py *.java"
+     *
      */
+    @Parameter(property="doxygen.filePatterns", defaultValue="*.doxygen *.doxy *.cpp *.cxx *.hpp *.hxx *.ipp *.ixx *.py *.java")
     private String filePatterns;
 
     /**
      * The RECURSIVE tag can be used to turn specify whether or not
      * subdirectories should be searched for input files as well. Possible
      * values are YES and NO. If left blank NO is used.
-     * 
-     * @parameter expression="${doxygen.recursive}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.recursive", defaultValue="false")
     private boolean recursive;
 
     /**
@@ -839,18 +821,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * should excluded from the INPUT source files. This way you can easily
      * exclude a subdirectory from a directory tree whose root is specified with
      * the INPUT tag.
-     * 
-     * @parameter expression="${doxygen.exclude}" default-value=".svn"
+     *
      */
+    @Parameter(property="doxygen.exclude", defaultValue=".svn")
     private String exclude;
 
     /**
      * The EXCLUDE_SYMLINKS tag can be used select whether or not files or
      * directories that are symbolic links (a Unix filesystem feature) are
      * excluded from the input.
-     * 
-     * @parameter expression="${doxygen.excludeSymlinks}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.excludeSymlinks", defaultValue="false")
     private boolean excludeSymlinks;
 
     /**
@@ -859,9 +841,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * certain files from those directories. Note that the wildcards are matched
      * against the file with absolute path, so to exclude all test directories
      * for example use the pattern &x2a/test/&x2a
-     * 
-     * @parameter expression="${doxygen.excludePatterns}"
+     *
      */
+    @Parameter(property="doxygen.excludePatterns")
     private String excludePatterns;
 
     /**
@@ -870,18 +852,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * output. The symbol name can be a fully qualified name, a word, or if the
      * wildcard * is used, a substring. Examples: ANamespace, AClass,
      * AClass::ANamespace, ANamespace::*Test
-     * 
-     * @parameter expression="${doxygen.excludeSymbols}"
+     *
      */
+    @Parameter(property="doxygen.excludeSymbols")
     private String excludeSymbols;
 
     /**
      * The EXAMPLE_PATH tag can be used to specify one or more files or
      * directories that contain example code fragments that are included (see
      * the \include command).
-     * 
-     * @parameter expression="${doxygen.examplePath}"
+     *
      */
+    @Parameter(property="doxygen.examplePath")
     private String examplePath;
 
     /**
@@ -889,9 +871,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like
      * *.cpp and *.h) to filter out the source-files in the directories. If left
      * blank all files are included.
-     * 
-     * @parameter expression="${doxygen.examplePatterns}"
+     *
      */
+    @Parameter(property="doxygen.examplePatterns")
     private String examplePatterns;
 
     /**
@@ -899,18 +881,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * searched for input files to be used with the \include or \dontinclude
      * commands irrespective of the value of the RECURSIVE tag. Possible values
      * are YES and NO. If left blank NO is used.
-     * 
-     * @parameter expression="${doxygen.exampleRecursive}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.exampleRecursive", defaultValue="false")
     private boolean exampleRecursive;
 
     /**
      * The IMAGE_PATH tag can be used to specify one or more files or
      * directories that contain image that are included in the documentation
      * (see the \image command).
-     * 
-     * @parameter expression="${doxygen.imagePath}"
+     *
      */
+    @Parameter(property="doxygen.imagePath")
     private String imagePath;
 
     /**
@@ -921,9 +903,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * tag, and &lt;input-file&gt; is the name of an input file. Doxygen will
      * then use the output that the filter program writes to standard output. If
      * FILTER_PATTERNS is specified, this tag will be ignored.
-     * 
-     * @parameter expression="${doxygen.inputFilter}"
+     *
      */
+    @Parameter(property="doxygen.inputFilter")
     private String inputFilter;
 
     /**
@@ -933,19 +915,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * pattern=filter (like *.cpp=my_cpp_filter). See INPUT_FILTER for further
      * info on how filters are used. If FILTER_PATTERNS is empty, INPUT_FILTER
      * is applied to all files.
-     * 
-     * @parameter expression="${doxygen.filterPatterns}"
+     *
      */
+    @Parameter(property="doxygen.filterPatterns")
     private String filterPatterns;
 
     /**
      * If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set
      * using INPUT_FILTER) will be used to filter the input files when producing
      * source files to browse (i.e. when SOURCE_BROWSER is set to YES).
-     * 
-     * @parameter expression="${doxygen.filterSourceFiles}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.filterSourceFiles", defaultValue="false")
     private boolean filterSourceFiles;
 
     /**
@@ -953,45 +934,43 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * be generated. Documented entities will be cross-referenced with these
      * sources. Note: To get rid of all source code in the generated output,
      * make sure also VERBATIM_HEADERS is set to NO.
-     * 
-     * @parameter expression="${doxygen.sourceBrowser}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.sourceBrowser", defaultValue="true")
     private boolean sourceBrowser;
 
     /**
      * Setting the INLINE_SOURCES tag to YES will include the body of functions
      * and classes directly in the documentation.
-     * 
-     * @parameter expression="${doxygen.inlineSources}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.inlineSources", defaultValue="false")
     private boolean inlineSources;
 
     /**
      * Setting the STRIP_CODE_COMMENTS tag to YES (the default) will instruct
      * doxygen to hide any special comment blocks from generated source code
      * fragments. Normal C and C++ comments will always remain visible.
-     * 
-     * @parameter expression="${doxygen.stripCodeComments}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.stripCodeComments", defaultValue="true")
     private boolean stripCodeComments;
 
     /**
      * If the REFERENCED_BY_RELATION tag is set to YES then for each documented
      * function all documented functions referencing it will be listed.
-     * 
-     * @parameter expression="${doxygen.referencedByRelation}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.referencedByRelation", defaultValue="false")
     private boolean referencedByRelation;
 
     /**
      * If the REFERENCES_RELATION tag is set to YES then for each documented
      * function all documented entities called/used by that function will be
      * listed.
-     * 
-     * @parameter expression="${doxygen.referencesRelation}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.referencesRelation", defaultValue="false")
     private boolean referencesRelation;
 
     /**
@@ -999,10 +978,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * SOURCE_BROWSER tag is set to YES, then the hyperlinks from functions in
      * REFERENCES_RELATION and REFERENCED_BY_RELATION lists will link to the
      * source code. Otherwise they will link to the documentstion.
-     * 
-     * @parameter expression="${doxygen.referencesLinkSource}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.referencesLinkSource", defaultValue="true")
     private boolean referencesLinkSource;
 
     /**
@@ -1011,36 +989,36 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * built-in source browser. The htags tool is part of GNU's global source
      * tagging system (see http://www.gnu.org/software/global/global.html). You
      * will need version 4.8.6 or higher.
-     * 
-     * @parameter expression="${doxygen.useHtags}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.useHtags", defaultValue="false")
     private boolean useHtags;
 
     /**
      * If the VERBATIM_HEADERS tag is set to YES (the default) then Doxygen will
      * generate a verbatim copy of the header file for each class for which an
      * include is specified. Set to NO to disable this.
-     * 
-     * @parameter expression="${doxygen.verbatimHeaders}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.verbatimHeaders", defaultValue="true")
     private boolean verbatimHeaders;
 
     /**
      * If the ALPHABETICAL_INDEX tag is set to YES, an alphabetical index of all
      * compounds will be generated. Enable this if the project contains a lot of
      * classes, structs, unions or interfaces.
-     * 
-     * @parameter expression="${doxygen.alphabeticalIndex}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.alphabeticalIndex", defaultValue="true")
     private boolean alphabeticalIndex;
 
     /**
      * If the alphabetical index is enabled (see ALPHABETICAL_INDEX) then the
      * COLS_IN_ALPHA_INDEX tag can be used to specify the number of columns in
      * which this list will be split (can be a number in the range [1..20])
-     * 
-     * @parameter expression="${doxygen.colsInAlphaIndex}" default-value="5"
+     *
      */
+    @Parameter(property="doxygen.colsInAlphaIndex", defaultValue="5")
     private Integer colsInAlphaIndex;
 
     /**
@@ -1048,54 +1026,53 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * will be put under the same header in the alphabetical index. The
      * IGNORE_PREFIX tag can be used to specify one or more prefixes that should
      * be ignored while generating the index headers.
-     * 
-     * @parameter expression="${doxygen.ignorePrefix}"
+     *
      */
+    @Parameter(property="doxygen.ignorePrefix")
     private String ignorePrefix;
 
     /**
      * If the GENERATE_HTML tag is set to YES (the default) Doxygen will
      * generate HTML output.
-     * 
-     * @parameter expression="${doxygen.generateHtml}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.generateHtml", defaultValue="true")
     private boolean generateHtml;
 
     /**
      * The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
      * If a relative path is entered the value of OUTPUT_DIRECTORY will be put
      * in front of it. If left blank `html' will be used as the default path.
-     * 
-     * @parameter expression="${doxygen.htmlOutput}" default-value="doxygen"
+     *
      */
+    @Parameter(property="doxygen.htmlOutput", defaultValue="doxygen")
     private String htmlOutput;
 
     /**
      * The HTML_FILE_EXTENSION tag can be used to specify the file extension for
      * each generated HTML page (for example: .htm,.php,.asp). If it is left
      * blank doxygen will generate files with .html extension.
-     * 
-     * @parameter expression="${doxygen.htmlFileExtension}"
-     *            default-value=".html"
+     *
      */
+    @Parameter(property="doxygen.htmlFileExtension", defaultValue=".html")
     private String htmlFileExtension;
 
     /**
      * The HTML_HEADER tag can be used to specify a personal HTML header for
      * each generated HTML page. If it is left blank doxygen will generate a
      * standard header.
-     * 
-     * @parameter expression="${doxygen.htmlHeader}"
+     *
      */
+    @Parameter(property="doxygen.htmlHeader")
     private String htmlHeader;
 
     /**
      * The HTML_FOOTER tag can be used to specify a personal HTML footer for
      * each generated HTML page. If it is left blank doxygen will generate a
      * standard footer.
-     * 
-     * @parameter expression="${doxygen.htmlFooter}"
+     *
      */
+    @Parameter(property="doxygen.htmlFooter")
     private String htmlFooter;
 
     /**
@@ -1105,18 +1082,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * generate a default style sheet. Note that doxygen will try to copy the
      * style sheet file to the HTML output directory, so don't put your own
      * stylesheet in the HTML output directory as well, or it will be erased!
-     * 
-     * @parameter expression="${doxygen.htmlStylesheet}"
+     *
      */
+    @Parameter(property="doxygen.htmlStylesheet")
     private String htmlStylesheet;
 
     /**
      * If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes,
      * files or namespaces will be aligned in HTML using tables. If set to NO a
      * bullet list will be used.
-     * 
-     * @parameter expression="${doxygen.htmlAlignMembers}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.htmlAlignMembers", defaultValue="true")
     private boolean htmlAlignMembers;
 
     /**
@@ -1125,10 +1102,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the page has loaded. For this to work a browser that supports JavaScript
      * and DHTML is required (for instance Mozilla 1.0+, Firefox Netscape 6.0+,
      * Internet explorer 5.0+, Konqueror, or Safari).
-     * 
-     * @parameter expression="${doxygen.htmlDynamicSections}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.htmlDynamicSections", defaultValue="true")
     private boolean htmlDynamicSections;
 
     /**
@@ -1142,9 +1118,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * it at startup. See
      * http://developer.apple.com/tools/creatingdocsetswithdoxygen.html for more
      * information.
-     * 
-     * @parameter expression="${doxygen.generateDocset}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateDocset", defaultValue="false")
     private boolean generateDocset;
 
     /**
@@ -1152,10 +1128,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the feed. A documentation feed provides an umbrella under which multiple
      * documentation sets from a single provider (such as a company or product
      * suite) can be grouped.
-     * 
-     * @parameter expression="${doxygen.docsetFeedname}" default-value=""Doxygen
-     *            generated docs""
+     *
      */
+    @Parameter(property="doxygen.docsetFeedname", defaultValue="\"Doxygen generated docs\"")
     private String docsetFeedname;
 
     /**
@@ -1163,10 +1138,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * should uniquely identify the documentation set bundle. This should be a
      * reverse domain-name style string, e.g. com.mycompany.MyDocSet. Doxygen
      * will append .docset to the name.
-     * 
-     * @parameter expression="${doxygen.docsetBundleId}"
-     *            default-value="org.doxygen.Project"
+     *
      */
+    @Parameter(property="doxygen.docsetBundleId", defaultValue="org.doxygen.Project")
     private String docsetBundleId;
 
     /**
@@ -1174,9 +1148,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * be generated that can be used as input for tools like the Microsoft HTML
      * help workshop to generate a compiled HTML help file (.chm) of the
      * generated HTML documentation.
-     * 
-     * @parameter expression="${doxygen.generateHtmlhelp}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateHtmlhelp", defaultValue="false")
     private boolean generateHtmlhelp;
 
     /**
@@ -1184,9 +1158,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * to specify the file name of the resulting .chm file. You can add a path
      * in front of the file if the result should not be written to the html
      * output directory.
-     * 
-     * @parameter expression="${doxygen.chmFile}"
+     *
      */
+    @Parameter(property="doxygen.chmFile")
     private String chmFile;
 
     /**
@@ -1194,45 +1168,45 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * used to specify the location (absolute path including file name) of the
      * HTML help compiler (hhc.exe). If non-empty doxygen will try to run the
      * HTML help compiler on the generated index.hhp.
-     * 
-     * @parameter expression="${doxygen.hhcLocation}"
+     *
      */
+    @Parameter(property="doxygen.hhcLocation")
     private String hhcLocation;
 
     /**
      * If the GENERATE_HTMLHELP tag is set to YES, the GENERATE_CHI flag
      * controls if a separate .chi index file is generated (YES) or that it
      * should be included in the master .chm file (NO).
-     * 
-     * @parameter expression="${doxygen.generateChi}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateChi", defaultValue="false")
     private boolean generateChi;
 
     /**
      * If the GENERATE_HTMLHELP tag is set to YES, the CHM_INDEX_ENCODING is
      * used to encode HtmlHelp index (hhk), content (hhc) and project file
      * content.
-     * 
-     * @parameter expression="${doxygen.chmIndexEncoding}"
+     *
      */
+    @Parameter(property="doxygen.chmIndexEncoding")
     private String chmIndexEncoding;
 
     /**
      * If the GENERATE_HTMLHELP tag is set to YES, the BINARY_TOC flag controls
      * whether a binary table of contents is generated (YES) or a normal table
      * of contents (NO) in the .chm file.
-     * 
-     * @parameter expression="${doxygen.binaryToc}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.binaryToc", defaultValue="false")
     private boolean binaryToc;
 
     /**
      * The TOC_EXPAND flag can be set to YES to add extra items for group
      * members to the contents of the HTML help documentation and to the tree
      * view.
-     * 
-     * @parameter expression="${doxygen.tocExpand}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.tocExpand", defaultValue="false")
     private boolean tocExpand;
 
     /**
@@ -1240,18 +1214,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * QHP_VIRTUAL_FOLDER are set, an additional index file will be generated
      * that can be used as input for Qt's qhelpgenerator to generate a Qt
      * Compressed Help (.qch) of the generated HTML documentation.
-     * 
-     * @parameter expression="${doxygen.generateQhp}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateQhp", defaultValue="false")
     private boolean generateQhp;
 
     /**
      * If the QHG_LOCATION tag is specified, the QCH_FILE tag can be used to
      * specify the file name of the resulting .qch file. The path specified is
      * relative to the HTML output folder.
-     * 
-     * @parameter expression="${doxygen.qchFile}"
+     *
      */
+    @Parameter(property="doxygen.qchFile")
     private String qchFile;
 
     /**
@@ -1259,10 +1233,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * Help Project output. For more information please see &lt;a
      * href="http://doc.trolltech.com/qthelpproject.html#namespace"&gt;Qt Help
      * Project / Namespace&lt;/a&gt;.
-     * 
-     * @parameter expression="${doxygen.qhpNamespace}"
-     *            default-value="org.doxygen.Project"
+     *
      */
+    @Parameter(property="doxygen.qhpNamespace", defaultValue="org.doxygen.Project")
     private String qhpNamespace;
 
     /**
@@ -1270,35 +1243,35 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * Qt Help Project output. For more information please see &lt;a
      * href="http://doc.trolltech.com/qthelpproject.html#virtual-folders"&gt;Qt
      * Help Project / Virtual Folders&lt;/a&gt;.
-     * 
-     * @parameter expression="${doxygen.qhpVirtualFolder}" default-value="doc"
+     *
      */
+    @Parameter(property="doxygen.qhpVirtualFolder", defaultValue="doc")
     private String qhpVirtualFolder;
 
     /**
      * If the GENERATE_QHP tag is set to YES, the QHG_LOCATION tag can be used
      * to specify the location of Qt's qhelpgenerator. If non-empty doxygen will
      * try to run qhelpgenerator on the generated .qhp file .
-     * 
-     * @parameter expression="${doxygen.qhgLocation}"
+     *
      */
+    @Parameter(property="doxygen.qhgLocation")
     private String qhgLocation;
 
     /**
      * The DISABLE_INDEX tag can be used to turn on/off the condensed index at
      * top of each HTML page. The value NO (the default) enables the index and
      * the value YES disables it.
-     * 
-     * @parameter expression="${doxygen.disableIndex}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.disableIndex", defaultValue="false")
     private boolean disableIndex;
 
     /**
      * This tag can be used to set the number of enum values (range [1..20])
      * that doxygen will group on one line in the generated HTML documentation.
-     * 
-     * @parameter expression="${doxygen.enumValuesPerLine}" default-value="4"
+     *
      */
+    @Parameter(property="doxygen.enumValuesPerLine", defaultValue="4")
     private Integer enumValuesPerLine;
 
     /**
@@ -1316,18 +1289,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * this behavior completely. For backwards compatibility with previous
      * releases of Doxygen, the values YES and NO are equivalent to FRAME and
      * NONE respectively.
-     * 
-     * @parameter expression="${doxygen.generateTreeview}" default-value="ALL"
+     *
      */
+    @Parameter(property="doxygen.generateTreeview", defaultValue="ALL")
     private String generateTreeview;
 
     /**
      * If the treeview is enabled (see GENERATE_TREEVIEW) then this tag can be
      * used to set the initial width (in pixels) of the frame in which the tree
      * is shown.
-     * 
-     * @parameter expression="${doxygen.treeviewWidth}" default-value="250"
+     *
      */
+    @Parameter(property="doxygen.treeviewWidth", defaultValue="250")
     private Integer treeviewWidth;
 
     /**
@@ -1336,71 +1309,70 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the font size after a successful doxygen run you need to manually remove
      * any form_*.png images from the HTML output directory to force them to be
      * regenerated.
-     * 
-     * @parameter expression="${doxygen.formulaFontsize}" default-value="10"
+     *
      */
+    @Parameter(property="doxygen.formulaFontsize", defaultValue="10")
     private Integer formulaFontsize;
 
     /**
      * If the GENERATE_LATEX tag is set to YES (the default) Doxygen will
      * generate Latex output.
-     * 
-     * @parameter expression="${doxygen.generateLatex}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateLatex", defaultValue="false")
     private boolean generateLatex;
 
     /**
      * The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put.
      * If a relative path is entered the value of OUTPUT_DIRECTORY will be put
      * in front of it. If left blank `latex' will be used as the default path.
-     * 
-     * @parameter expression="${doxygen.latexOutput}" default-value="latex"
+     *
      */
+    @Parameter(property="doxygen.latexOutput", defaultValue="latex")
     private String latexOutput;
 
     /**
      * The LATEX_CMD_NAME tag can be used to specify the LaTeX command name to
      * be invoked. If left blank `latex' will be used as the default command
      * name.
-     * 
-     * @parameter expression="${doxygen.latexCmdName}" default-value="latex"
+     *
      */
+    @Parameter(property="doxygen.latexCmdName", defaultValue="latex")
     private String latexCmdName;
 
     /**
      * The MAKEINDEX_CMD_NAME tag can be used to specify the command name to
      * generate index for LaTeX. If left blank `makeindex' will be used as the
      * default command name.
-     * 
-     * @parameter expression="${doxygen.makeindexCmdName}"
-     *            default-value="makeindex"
+     *
      */
+    @Parameter(property="doxygen.makeindexCmdName", defaultValue="makeindex")
     private String makeindexCmdName;
 
     /**
      * If the COMPACT_LATEX tag is set to YES Doxygen generates more compact
      * LaTeX documents. This may be useful for small projects and may help to
      * save some trees in general.
-     * 
-     * @parameter expression="${doxygen.compactLatex}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.compactLatex", defaultValue="false")
     private boolean compactLatex;
 
     /**
      * The PAPER_TYPE tag can be used to set the paper type that is used by the
      * printer. Possible values are: a4, a4wide, letter, legal and executive. If
      * left blank a4wide will be used.
-     * 
-     * @parameter expression="${doxygen.paperType}" default-value="a4wide"
+     *
      */
+    @Parameter(property="doxygen.paperType", defaultValue="a4wide")
     private String paperType;
 
     /**
      * The EXTRA_PACKAGES tag can be to specify one or more names of LaTeX
      * packages that should be included in the LaTeX output.
-     * 
-     * @parameter expression="${doxygen.extraPackages}"
+     *
      */
+    @Parameter(property="doxygen.extraPackages")
     private String extraPackages;
 
     /**
@@ -1408,9 +1380,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the generated latex document. The header should contain everything until
      * the first chapter. If it is left blank doxygen will generate a standard
      * header. Notice: only use this tag if you know what you are doing!
-     * 
-     * @parameter expression="${doxygen.latexHeader}"
+     *
      */
+    @Parameter(property="doxygen.latexHeader")
     private String latexHeader;
 
     /**
@@ -1418,18 +1390,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * prepared for conversion to pdf (using ps2pdf). The pdf file will contain
      * links (just like the HTML output) instead of page references This makes
      * the output suitable for online browsing using a pdf viewer.
-     * 
-     * @parameter expression="${doxygen.pdfHyperlinks}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.pdfHyperlinks", defaultValue="true")
     private boolean pdfHyperlinks;
 
     /**
      * If the USE_PDFLATEX tag is set to YES, pdflatex will be used instead of
      * plain latex in the generated Makefile. Set this option to YES to get a
      * higher quality PDF documentation.
-     * 
-     * @parameter expression="${doxygen.usePdflatex}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.usePdflatex", defaultValue="true")
     private boolean usePdflatex;
 
     /**
@@ -1437,44 +1409,44 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * \\batchmode. command to the generated LaTeX files. This will instruct
      * LaTeX to keep running if errors occur, instead of asking the user for
      * help. This option is also used when generating formulas in HTML.
-     * 
-     * @parameter expression="${doxygen.latexBatchmode}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.latexBatchmode", defaultValue="false")
     private boolean latexBatchmode;
 
     /**
      * If LATEX_HIDE_INDICES is set to YES then doxygen will not include the
      * index chapters (such as File Index, Compound Index, etc.) in the output.
-     * 
-     * @parameter expression="${doxygen.latexHideIndices}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.latexHideIndices", defaultValue="false")
     private boolean latexHideIndices;
 
     /**
      * If the GENERATE_RTF tag is set to YES Doxygen will generate RTF output
      * The RTF output is optimized for Word 97 and may not look very pretty with
      * other RTF readers or editors.
-     * 
-     * @parameter expression="${doxygen.generateRtf}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateRtf", defaultValue="false")
     private boolean generateRtf;
 
     /**
      * The RTF_OUTPUT tag is used to specify where the RTF docs will be put. If
      * a relative path is entered the value of OUTPUT_DIRECTORY will be put in
      * front of it. If left blank `rtf' will be used as the default path.
-     * 
-     * @parameter expression="${doxygen.rtfOutput}" default-value="rtf"
+     *
      */
+    @Parameter(property="doxygen.rtfOutput", defaultValue="rtf")
     private String rtfOutput;
 
     /**
      * If the COMPACT_RTF tag is set to YES Doxygen generates more compact RTF
      * documents. This may be useful for small projects and may help to save
      * some trees in general.
-     * 
-     * @parameter expression="${doxygen.compactRtf}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.compactRtf", defaultValue="false")
     private boolean compactRtf;
 
     /**
@@ -1483,51 +1455,51 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * HTML output) instead of page references. This makes the output suitable
      * for online browsing using WORD or other programs which support those
      * fields. Note: wordpad (write) and others do not support links.
-     * 
-     * @parameter expression="${doxygen.rtfHyperlinks}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.rtfHyperlinks", defaultValue="false")
     private boolean rtfHyperlinks;
 
     /**
      * Load stylesheet definitions from file. Syntax is similar to doxygen's
      * config file, i.e. a series of assignments. You only have to provide
      * replacements, missing definitions are set to their default value.
-     * 
-     * @parameter expression="${doxygen.rtfStylesheetFile}"
+     *
      */
+    @Parameter(property="doxygen.rtfStylesheetFile")
     private String rtfStylesheetFile;
 
     /**
      * Set optional variables used in the generation of an rtf document. Syntax
      * is similar to doxygen's config file.
-     * 
-     * @parameter expression="${doxygen.rtfExtensionsFile}"
+     *
      */
+    @Parameter(property="doxygen.rtfExtensionsFile")
     private String rtfExtensionsFile;
 
     /**
      * If the GENERATE_MAN tag is set to YES (the default) Doxygen will generate
      * man pages
-     * 
-     * @parameter expression="${doxygen.generateMan}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateMan", defaultValue="false")
     private boolean generateMan;
 
     /**
      * The MAN_OUTPUT tag is used to specify where the man pages will be put. If
      * a relative path is entered the value of OUTPUT_DIRECTORY will be put in
      * front of it. If left blank `man' will be used as the default path.
-     * 
-     * @parameter expression="${doxygen.manOutput}" default-value="man"
+     *
      */
+    @Parameter(property="doxygen.manOutput", defaultValue="man")
     private String manOutput;
 
     /**
      * The MAN_EXTENSION tag determines the extension that is added to the
      * generated man pages (default is the subroutine's section .3)
-     * 
-     * @parameter expression="${doxygen.manExtension}" default-value=".3"
+     *
      */
+    @Parameter(property="doxygen.manExtension", defaultValue=".3")
     private String manExtension;
 
     /**
@@ -1536,42 +1508,42 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the real man page(s). These additional files only source the real man
      * page, but without them the man command would be unable to find the
      * correct page. The default is NO.
-     * 
-     * @parameter expression="${doxygen.manLinks}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.manLinks", defaultValue="false")
     private boolean manLinks;
 
     /**
      * If the GENERATE_XML tag is set to YES Doxygen will generate an XML file
      * that captures the structure of the code including all documentation.
-     * 
-     * @parameter expression="${doxygen.generateXml}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateXml", defaultValue="false")
     private boolean generateXml;
 
     /**
      * The XML_OUTPUT tag is used to specify where the XML pages will be put. If
      * a relative path is entered the value of OUTPUT_DIRECTORY will be put in
      * front of it. If left blank `xml' will be used as the default path.
-     * 
-     * @parameter expression="${doxygen.xmlOutput}" default-value="xml"
+     *
      */
+    @Parameter(property="doxygen.xmlOutput", defaultValue="xml")
     private String xmlOutput;
 
     /**
      * The XML_SCHEMA tag can be used to specify an XML schema, which can be
      * used by a validating XML parser to check the syntax of the XML files.
-     * 
-     * @parameter expression="${doxygen.xmlSchema}"
+     *
      */
+    @Parameter(property="doxygen.xmlSchema")
     private String xmlSchema;
 
     /**
      * The XML_DTD tag can be used to specify an XML DTD, which can be used by a
      * validating XML parser to check the syntax of the XML files.
-     * 
-     * @parameter expression="${doxygen.xmlDtd}"
+     *
      */
+    @Parameter(property="doxygen.xmlDtd")
     private String xmlDtd;
 
     /**
@@ -1579,9 +1551,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * listings (including syntax highlighting and cross-referencing
      * information) to the XML output. Note that enabling this will
      * significantly increase the size of the XML output.
-     * 
-     * @parameter expression="${doxygen.xmlProgramlisting}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.xmlProgramlisting", defaultValue="true")
     private boolean xmlProgramlisting;
 
     /**
@@ -1589,10 +1561,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * AutoGen Definitions (see autogen.sf.net) file that captures the structure
      * of the code including all documentation. Note that this feature is still
      * experimental and incomplete at the moment.
-     * 
-     * @parameter expression="${doxygen.generateAutogenDef}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generateAutogenDef", defaultValue="false")
     private boolean generateAutogenDef;
 
     /**
@@ -1600,18 +1571,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * module file that captures the structure of the code including all
      * documentation. Note that this feature is still experimental and
      * incomplete at the moment.
-     * 
-     * @parameter expression="${doxygen.generatePerlmod}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.generatePerlmod", defaultValue="false")
     private boolean generatePerlmod;
 
     /**
      * If the PERLMOD_LATEX tag is set to YES Doxygen will generate the
      * necessary Makefile rules, Perl scripts and LaTeX code to be able to
      * generate PDF and DVI output from the Perl module output.
-     * 
-     * @parameter expression="${doxygen.perlmodLatex}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.perlmodLatex", defaultValue="false")
     private boolean perlmodLatex;
 
     /**
@@ -1620,9 +1591,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * you want to understand what is going on. On the other hand, if this tag
      * is set to NO the size of the Perl module output will be much smaller and
      * Perl will parse it just the same.
-     * 
-     * @parameter expression="${doxygen.perlmodPretty}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.perlmodPretty", defaultValue="true")
     private boolean perlmodPretty;
 
     /**
@@ -1630,19 +1601,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * prefixed with the string contained in PERLMOD_MAKEVAR_PREFIX. This is
      * useful so different doxyrules.make files included by the same Makefile
      * don't overwrite each other's variables.
-     * 
-     * @parameter expression="${doxygen.perlmodMakevarPrefix}"
+     *
      */
+    @Parameter(property="doxygen.perlmodMakevarPrefix")
     private String perlmodMakevarPrefix;
 
     /**
      * If the ENABLE_PREPROCESSING tag is set to YES (the default) Doxygen will
      * evaluate all C-preprocessor directives found in the sources and include
      * files.
-     * 
-     * @parameter expression="${doxygen.enablePreprocessing}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.enablePreprocessing", defaultValue="true")
     private boolean enablePreprocessing;
 
     /**
@@ -1650,35 +1620,35 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * names in the source code. If set to NO (the default) only conditional
      * compilation will be performed. Macro expansion can be done in a
      * controlled way by setting EXPAND_ONLY_PREDEF to YES.
-     * 
-     * @parameter expression="${doxygen.macroExpansion}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.macroExpansion", defaultValue="false")
     private boolean macroExpansion;
 
     /**
      * If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES
      * then the macro expansion is limited to the macros specified with the
      * PREDEFINED and EXPAND_AS_DEFINED tags.
-     * 
-     * @parameter expression="${doxygen.expandOnlyPredef}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.expandOnlyPredef", defaultValue="false")
     private boolean expandOnlyPredef;
 
     /**
      * If the SEARCH_INCLUDES tag is set to YES (the default) the includes files
      * in the INCLUDE_PATH (see below) will be search if a #include is found.
-     * 
-     * @parameter expression="${doxygen.searchIncludes}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.searchIncludes", defaultValue="true")
     private boolean searchIncludes;
 
     /**
      * The INCLUDE_PATH tag can be used to specify one or more directories that
      * contain include files that are not input files but should be processed by
      * the preprocessor.
-     * 
-     * @parameter expression="${doxygen.includePath}"
+     *
      */
+    @Parameter(property="doxygen.includePath")
     private String includePath;
 
     /**
@@ -1686,9 +1656,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * patterns (like *.h and *.hpp) to filter out the header-files in the
      * directories. If left blank, the patterns specified with FILE_PATTERNS
      * will be used.
-     * 
-     * @parameter expression="${doxygen.includeFilePatterns}"
+     *
      */
+    @Parameter(property="doxygen.includeFilePatterns")
     private String includeFilePatterns;
 
     /**
@@ -1698,9 +1668,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * name=definition (no spaces). If the definition and the = are omitted =1
      * is assumed. To prevent a macro definition from being undefined via #undef
      * or recursively expanded use the := operator instead of the = operator.
-     * 
-     * @parameter expression="${doxygen.predefined}"
+     *
      */
+    @Parameter(property="doxygen.predefined")
     private String predefined;
 
     /**
@@ -1708,9 +1678,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * this tag can be used to specify a list of macro names that should be
      * expanded. The macro definition that is found in the sources will be used.
      * Use the PREDEFINED tag if you want to use a different macro definition.
-     * 
-     * @parameter expression="${doxygen.expandAsDefined}"
+     *
      */
+    @Parameter(property="doxygen.expandAsDefined")
     private String expandAsDefined;
 
     /**
@@ -1719,10 +1689,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * alone on a line, have an all uppercase name, and do not end with a
      * semicolon. Such function macros are typically used for boiler-plate code,
      * and will confuse the parser if not removed.
-     * 
-     * @parameter expression="${doxygen.skipFunctionMacros}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.skipFunctionMacros", defaultValue="true")
     private boolean skipFunctionMacros;
 
     /**
@@ -1737,43 +1706,43 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the name does NOT include the path) If a tag file is not located in the
      * directory in which doxygen is run, you must also specify the path to the
      * tagfile here.
-     * 
-     * @parameter expression="${doxygen.tagfiles}"
+     *
      */
+    @Parameter(property="doxygen.tagfiles")
     private String tagfiles;
 
     /**
      * When a file name is specified after GENERATE_TAGFILE, doxygen will create
      * a tag file that is based on the input files it reads.
-     * 
-     * @parameter expression="${doxygen.generateTagfile}"
+     *
      */
+    @Parameter(property="doxygen.generateTagfile")
     private String generateTagfile;
 
     /**
      * If the ALLEXTERNALS tag is set to YES all external classes will be listed
      * in the class index. If set to NO only the inherited external classes will
      * be listed.
-     * 
-     * @parameter expression="${doxygen.allexternals}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.allexternals", defaultValue="false")
     private boolean allexternals;
 
     /**
      * If the EXTERNAL_GROUPS tag is set to YES all external groups will be
      * listed in the modules index. If set to NO, only the current project's
      * groups will be listed.
-     * 
-     * @parameter expression="${doxygen.externalGroups}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.externalGroups", defaultValue="true")
     private boolean externalGroups;
 
     /**
      * The PERL_PATH should be the absolute path and name of the perl script
      * interpreter (i.e. the result of `which perl').
-     * 
-     * @parameter expression="${doxygen.perlPath}" default-value="/usr/bin/perl"
+     *
      */
+    @Parameter(property="doxygen.perlPath", defaultValue="/usr/bin/perl")
     private String perlPath;
 
     /**
@@ -1783,9 +1752,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * that this option is superseded by the HAVE_DOT option below. This is only
      * a fallback. It is recommended to install and use dot, since it yields
      * more powerful graphs.
-     * 
-     * @parameter expression="${doxygen.classDiagrams}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.classDiagrams", defaultValue="true")
     private boolean classDiagrams;
 
     /**
@@ -1795,19 +1764,18 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the documentation. The MSCGEN_PATH tag allows you to specify the
      * directory where the mscgen tool resides. If left empty the tool is
      * assumed to be found in the default search path.
-     * 
-     * @parameter expression="${doxygen.mscgenPath}"
+     *
      */
+    @Parameter(property="doxygen.mscgenPath")
     private String mscgenPath;
 
     /**
      * If set to YES, the inheritance and collaboration graphs will hide
      * inheritance and usage relations if the target is undocumented or is not a
      * class.
-     * 
-     * @parameter expression="${doxygen.hideUndocRelations}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.hideUndocRelations", defaultValue="true")
     private boolean hideUndocRelations;
 
     /**
@@ -1815,9 +1783,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * is available from the path. This tool is part of Graphviz, a graph
      * visualization toolkit from AT&T and Lucent Bell Labs. The other options
      * in this section have no effect if this option is set to NO (the default)
-     * 
-     * @parameter expression="${doxygen.haveDot}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.haveDot", defaultValue="true")
     private boolean haveDot;
 
     /**
@@ -1829,17 +1797,17 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * to find the font, which can be done by putting it in a standard location
      * or by setting the DOTFONTPATH environment variable or by setting
      * DOT_FONTPATH to the directory containing the font.
-     * 
-     * @parameter expression="${doxygen.dotFontname}" default-value="FreeSans"
+     *
      */
+    @Parameter(property="doxygen.dotFontname", defaultValue="FreeSans")
     private String dotFontname;
 
     /**
      * The DOT_FONTSIZE tag can be used to set the size of the font of dot
      * graphs. The default size is 10pt.
-     * 
-     * @parameter expression="${doxygen.dotFontsize}" default-value="10"
+     *
      */
+    @Parameter(property="doxygen.dotFontsize", defaultValue="10")
     private Integer dotFontsize;
 
     /**
@@ -1847,9 +1815,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * the FreeSans.ttf font (which doxygen will put there itself). If you
      * specify a different font using DOT_FONTNAME you can set the path where
      * dot can find it using this tag.
-     * 
-     * @parameter expression="${doxygen.dotFontpath}"
+     *
      */
+    @Parameter(property="doxygen.dotFontpath")
     private String dotFontpath;
 
     /**
@@ -1857,9 +1825,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * generate a graph for each documented class showing the direct and
      * indirect inheritance relations. Setting this tag to YES will force the
      * the CLASS_DIAGRAMS tag to NO.
-     * 
-     * @parameter expression="${doxygen.classGraph}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.classGraph", defaultValue="true")
     private boolean classGraph;
 
     /**
@@ -1867,36 +1835,34 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * will generate a graph for each documented class showing the direct and
      * indirect implementation dependencies (inheritance, containment, and class
      * references variables) of the class with other documented classes.
-     * 
-     * @parameter expression="${doxygen.collaborationGraph}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.collaborationGraph", defaultValue="true")
     private boolean collaborationGraph;
 
     /**
      * If the GROUP_GRAPHS and HAVE_DOT tags are set to YES then doxygen will
      * generate a graph for groups, showing the direct groups dependencies
-     * 
-     * @parameter expression="${doxygen.groupGraphs}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.groupGraphs", defaultValue="true")
     private boolean groupGraphs;
 
     /**
      * If the UML_LOOK tag is set to YES doxygen will generate inheritance and
      * collaboration diagrams in a style similar to the OMG's Unified Modeling
      * Language.
-     * 
-     * @parameter expression="${doxygen.umlLook}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.umlLook", defaultValue="false")
     private boolean umlLook;
 
     /**
      * If set to YES, the inheritance and collaboration graphs will show the
      * relations between templates and their instances.
-     * 
-     * @parameter expression="${doxygen.templateRelations}"
-     *            default-value="false"
+     *
      */
+    @Parameter(property="doxygen.templateRelations", defaultValue="false")
     private boolean templateRelations;
 
     /**
@@ -1904,9 +1870,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * tags are set to YES then doxygen will generate a graph for each
      * documented file showing the direct and indirect include dependencies of
      * the file with other documented files.
-     * 
-     * @parameter expression="${doxygen.includeGraph}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.includeGraph", defaultValue="true")
     private boolean includeGraph;
 
     /**
@@ -1914,9 +1880,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * HAVE_DOT tags are set to YES then doxygen will generate a graph for each
      * documented header file showing the documented files that directly or
      * indirectly include this file.
-     * 
-     * @parameter expression="${doxygen.includedByGraph}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.includedByGraph", defaultValue="true")
     private boolean includedByGraph;
 
     /**
@@ -1925,9 +1891,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * method. Note that enabling this option will significantly increase the
      * time of a run. So in most cases it will be better to enable call graphs
      * for selected functions only using the \callgraph command.
-     * 
-     * @parameter expression="${doxygen.callGraph}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.callGraph", defaultValue="false")
     private boolean callGraph;
 
     /**
@@ -1936,18 +1902,17 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * method. Note that enabling this option will significantly increase the
      * time of a run. So in most cases it will be better to enable caller graphs
      * for selected functions only using the \callergraph command.
-     * 
-     * @parameter expression="${doxygen.callerGraph}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.callerGraph", defaultValue="false")
     private boolean callerGraph;
 
     /**
      * If the GRAPHICAL_HIERARCHY and HAVE_DOT tags are set to YES then doxygen
      * will graphical hierarchy of all classes instead of a textual one.
-     * 
-     * @parameter expression="${doxygen.graphicalHierarchy}"
-     *            default-value="true"
+     *
      */
+    @Parameter(property="doxygen.graphicalHierarchy", defaultValue="true")
     private boolean graphicalHierarchy;
 
     /**
@@ -1955,36 +1920,36 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * then doxygen will show the dependencies a directory has on other
      * directories in a graphical way. The dependency relations are determined
      * by the #include relations between the files in the directories.
-     * 
-     * @parameter expression="${doxygen.directoryGraph}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.directoryGraph", defaultValue="true")
     private boolean directoryGraph;
 
     /**
      * The DOT_IMAGE_FORMAT tag can be used to set the image format of the
      * images generated by dot. Possible values are png, jpg, or gif If left
      * blank png will be used.
-     * 
-     * @parameter expression="${doxygen.dotImageFormat}" default-value="png"
+     *
      */
+    @Parameter(property="doxygen.dotImageFormat", defaultValue="png")
     private String dotImageFormat;
 
     /**
      * The tag DOT_PATH can be used to specify the path where the dot tool can
      * be found. If left blank, it is assumed the dot tool can be found in the
      * path.
-     * 
-     * @parameter expression="${doxygen.dotPath}" default-value="/usr/bin"
+     *
      */
+    @Parameter(property="doxygen.dotPath", defaultValue="/usr/bin")
     private String dotPath;
 
     /**
      * The DOTFILE_DIRS tag can be used to specify one or more directories that
      * contain dot files that are included in the documentation (see the
      * \dotfile command).
-     * 
-     * @parameter expression="${doxygen.dotfileDirs}"
+     *
      */
+    @Parameter(property="doxygen.dotfileDirs")
     private String dotfileDirs;
 
     /**
@@ -1996,9 +1961,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * than DOT_GRAPH_MAX_NODES then the graph will not be shown at all. Also
      * note that the size of a graph can be further restricted by
      * MAX_DOT_GRAPH_DEPTH.
-     * 
-     * @parameter expression="${doxygen.dotGraphMaxNodes}" default-value="50"
+     *
      */
+    @Parameter(property="doxygen.dotGraphMaxNodes", defaultValue="50")
     private Integer dotGraphMaxNodes;
 
     /**
@@ -2010,9 +1975,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * time needed for large code bases. Also note that the size of a graph can
      * be further restricted by DOT_GRAPH_MAX_NODES. Using a depth of 0 means no
      * depth restriction.
-     * 
-     * @parameter expression="${doxygen.maxDotGraphDepth}" default-value="0"
+     *
      */
+    @Parameter(property="doxygen.maxDotGraphDepth", defaultValue="0")
     private Integer maxDotGraphDepth;
 
     /**
@@ -2021,9 +1986,9 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * seem to support this out of the box. Warning: Depending on the platform
      * used, enabling this option may lead to badly anti-aliased labels on the
      * edges of a graph (i.e. they become hard to read).
-     * 
-     * @parameter expression="${doxygen.dotTransparent}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.dotTransparent", defaultValue="true")
     private boolean dotTransparent;
 
     /**
@@ -2031,34 +1996,34 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * output files in one run (i.e. multiple -o and -T options on the command
      * line). This makes dot run faster, but since only newer versions of dot
      * (&gt;1.8.10) support this, this feature is disabled by default.
-     * 
-     * @parameter expression="${doxygen.dotMultiTargets}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.dotMultiTargets", defaultValue="true")
     private boolean dotMultiTargets;
 
     /**
      * If the GENERATE_LEGEND tag is set to YES (the default) Doxygen will
      * generate a legend page explaining the meaning of the various boxes and
      * arrows in the dot generated graphs.
-     * 
-     * @parameter expression="${doxygen.generateLegend}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.generateLegend", defaultValue="true")
     private boolean generateLegend;
 
     /**
      * If the DOT_CLEANUP tag is set to YES (the default) Doxygen will remove
      * the intermediate dot files that are used to generate the various graphs.
-     * 
-     * @parameter expression="${doxygen.dotCleanup}" default-value="true"
+     *
      */
+    @Parameter(property="doxygen.dotCleanup", defaultValue="true")
     private boolean dotCleanup;
 
     /**
      * The SEARCHENGINE tag specifies whether or not a search engine should be
      * used. If set to NO the values of all tags below this one will be ignored.
-     * 
-     * @parameter expression="${doxygen.searchengine}" default-value="false"
+     *
      */
+    @Parameter(property="doxygen.searchengine", defaultValue="false")
     private boolean searchengine;
 
     public File getConfigurationFile() {

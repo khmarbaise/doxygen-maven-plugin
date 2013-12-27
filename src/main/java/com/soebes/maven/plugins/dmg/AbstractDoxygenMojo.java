@@ -1,8 +1,8 @@
 /**
  * The Doxygen Maven Plugin (dmp)
  *
- * Copyright (c) 2010, 2011 by SoftwareEntwicklung Beratung Schulung (SoEBeS)
- * Copyright (c) 2010, 2011 by Karl Heinz Marbaise
+ * Copyright (c) 2010 - 2014 by SoftwareEntwicklung Beratung Schulung (SoEBeS)
+ * Copyright (c) 2010 - 2014 by Karl Heinz Marbaise
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,25 +21,16 @@
  */
 package com.soebes.maven.plugins.dmg;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Locale;
-
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.reporting.MavenReportException;
 import org.apache.maven.toolchain.Toolchain;
 import org.apache.maven.toolchain.ToolchainManager;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
-import org.codehaus.plexus.util.cli.CommandLineException;
-import org.codehaus.plexus.util.cli.CommandLineUtils;
-import org.codehaus.plexus.util.cli.Commandline;
-import org.codehaus.plexus.util.cli.StreamConsumer;
-import org.codehaus.plexus.util.cli.WriterStreamConsumer;
+import org.codehaus.plexus.util.cli.*;
+import java.io.*;
+import java.util.Locale;
 
 /**
  * This abstract class contains all configurable parameters
@@ -57,8 +48,8 @@ public abstract class AbstractDoxygenMojo
 	 * If a relative path is entered, it will be relative to the location
 	 * where doxygen was started. If left blank the current directory will be used.
 	 * 
-	 * @parameter expression="${doxygen.outputDirectory}" default-value="${project.reporting.outputDirectory}"
 	 */
+    @Parameter(property = "doxygen.outputDirectory", defaultValue = "${project.reporting.outputDirectory}")
 	private File outputDirectory;
 
 	/**
@@ -69,6 +60,7 @@ public abstract class AbstractDoxygenMojo
 	 * 
 	 * @parameter expression="${doxygen.executable}" default-value="doxygen"
 	 */
+    @Parameter(property = "doxygen.executable", defaultValue = "doxgen")
 	private String executable;
 	
     /**
@@ -79,6 +71,7 @@ public abstract class AbstractDoxygenMojo
      * @required
      * @readonly
      */
+    @Component
     private MavenSession session;
 
 	/**
@@ -88,6 +81,7 @@ public abstract class AbstractDoxygenMojo
 	 * @required
 	 * @readonly
 	 */
+    @Parameter(property = "basedir", defaultValue = "${project.basedir}", required = true, readonly = true)
 	private File basedir;
 	
 	/**
@@ -97,6 +91,7 @@ public abstract class AbstractDoxygenMojo
 	 * @required
 	 * @readonly
 	 */
+    @Parameter(property = "skip", defaultValue = "false", required = true, readonly = true)
 	private boolean skip;
 
 

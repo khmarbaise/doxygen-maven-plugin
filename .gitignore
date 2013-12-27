@@ -1,6 +1,9 @@
 .classpath
 .project
 nbactions.xml
-/.settings
-/target
-/test-output
+.settings
+target
+test-output
+# IntelliJ configuration files.
+.idea
+*.iml

@@ -21,19 +21,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>2.1</version>
+				<version>3.3</version>
 			</plugin>
 		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.1.2</version>
+				<version>2.7</version>
 			</plugin>
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.4</version>
+				<version>2.9.1</version>
 			</plugin>
 			
 			<plugin>
@@ -44,6 +44,7 @@
 					<haveDot>false</haveDot>
 					<quiet>false</quiet>
 					<projectName>This is a Test Project (basicReportTest)</projectName>
+                    <executable>/Applications/Doxygen.app/Contents/Resources/doxygen</executable>
 				</configuration>
 			</plugin>
 		</plugins>

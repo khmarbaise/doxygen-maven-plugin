@@ -15,6 +15,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+        </plugins>
+    </build>
 
 	<reporting>
 		<plugins>
@@ -26,6 +35,8 @@
 					<haveDot>false</haveDot>
 					<quiet>false</quiet>
 					<projectName>This is a Test Project (basicTest)</projectName>
+                    <executable>/Applications/Doxygen.app/Contents/Resources/doxygen</executable>
+
 				</configuration>
 			</plugin>
 		</plugins>

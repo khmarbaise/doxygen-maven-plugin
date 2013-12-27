@@ -18,11 +18,11 @@
 
 	<reporting>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.1.2</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
 		
 			<plugin>
 				<groupId>@project.groupId@</groupId>
@@ -41,7 +41,9 @@
 					<repeatBrief>true</repeatBrief>
 					<abbreviateBrief>true</abbreviateBrief>
 					<alwaysDetailedSec>true</alwaysDetailedSec>
-				</configuration>
+                    <executable>/Applications/Doxygen.app/Contents/Resources/doxygen</executable>
+
+                </configuration>
 			</plugin>
 		</plugins>
 	</reporting>

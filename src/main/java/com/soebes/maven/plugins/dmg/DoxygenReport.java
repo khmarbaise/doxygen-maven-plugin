@@ -1,8 +1,8 @@
 /**
  * The Doxygen Maven Plugin (dmp)
  *
- * Copyright (c) 2010, 2011 by SoftwareEntwicklung Beratung Schulung (SoEBeS)
- * Copyright (c) 2010, 2011 by Karl Heinz Marbaise
+ * Copyright (c) 2010 - 2014 by SoftwareEntwicklung Beratung Schulung (SoEBeS)
+ * Copyright (c) 2010 - 2014 by Karl Heinz Marbaise
  *
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -21,24 +21,28 @@
  */
 package com.soebes.maven.plugins.dmg;
 
-import java.io.File;
-import java.util.Locale;
-
 import org.apache.maven.doxia.module.xhtml.decoration.render.RenderingContext;
+import org.apache.maven.doxia.siterenderer.Renderer;
 import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.reporting.MavenReport;
 import org.apache.maven.reporting.MavenReportException;
 import org.codehaus.doxia.sink.Sink;
+import java.io.File;
+import java.util.Locale;
 
 
 /**
  * This part will create the report.
  * 
- * @goal report
  */
+@Mojo( name = "report", defaultPhase = LifecyclePhase.SITE, requiresProject = true, threadSafe = true )
 public class DoxygenReport 
     extends AbstractDoxygenMojo
     implements MavenReport
@@ -49,21 +53,21 @@ public class DoxygenReport
      * @required
      * @readonly
      */
-//    private SiteRenderer siteRenderer;
+    @Component
+    private Renderer siteRenderer;
 	
-	 /**
-	* Specifies the destination directory where javadoc saves the generated HTML files.
-	*
-	* @parameter expression="${reportOutputDirectory}" default-value="${project.reporting.outputDirectory}"
-	* @required
-	*/
+    /**
+	 * Specifies the destination directory where javadoc saves the generated HTML files.
+	 *
+	 */
+    @Parameter(defaultValue = "${project.reporting.outputDirectory}", property = "reportOutputDirectory", required = true)
 	private File reportOutputDirectory;
 	
     /**
      * The name of the destination directory.
      *
-     * @parameter expression="${destDir}" default-value="doxygen"
      */
+    @Parameter(defaultValue = "doxygen", property = "destDir")
     private String destDir;
 
     

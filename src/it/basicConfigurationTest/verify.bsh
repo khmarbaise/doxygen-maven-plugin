@@ -69,7 +69,6 @@ String[] checkedLines = {
 	"Generating file documentation...",
 	"Generating page documentation...",
 	"Generating group documentation...",
-	"Generating group index...",
 	"Generating class documentation...",
 	"Generating annotated compound index...",
 	"Generating alphabetical compound index...",
@@ -80,14 +79,11 @@ String[] checkedLines = {
 	"Generating graph info page...",
 	"Generating directory documentation...",
 	"Generating file index...",
-	"Generating directory index...",
 	"Generating example index...",
 	"Generating file member index...",
 };
 
 Boolean[] checked = {
-	false,
-	false,
 	false,
 	false,
 	false,
