@@ -19,15 +19,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.soebes.maven.plugins.dmg;
+package com.soebes.maven.plugins.doxygen;
 
 import org.apache.maven.reporting.MavenReportException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import com.soebes.maven.plugins.doxygen.DoxygenReport;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 

@@ -33,6 +33,9 @@
             desc="Bug Fix Release">
             <action
                 dev="Karl Heinz Marbaise"
+                type="add">Changed java package according to the groupId.</action>
+            <action
+                dev="Karl Heinz Marbaise"
                 type="add">Changed groupId into com.soebes.maven.plugins artifactId: doxygen-maven-plugin</action>
             <action
                 dev="Karl Heinz Marbaise"

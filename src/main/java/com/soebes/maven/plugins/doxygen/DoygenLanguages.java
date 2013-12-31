@@ -19,7 +19,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.soebes.maven.plugins.dmg;
+package com.soebes.maven.plugins.doxygen;
 
 /**
  * The languages which are supported by doxygen.
