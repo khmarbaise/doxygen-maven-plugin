@@ -135,7 +135,7 @@ public enum DoxygenParameters {
 		+	"# If left blank the directory from which doxygen is run is used as the \n"
 		+	"# path to strip.\n",
 		DoxygenParameterType.STRING,
-		"/home/marbkar/workspace-deps/depstest-0.2.0"
+		null
 	),
 	STRIP_FROM_INC_PATH(
 			"# The STRIP_FROM_INC_PATH tag can be used to strip a user-defined part of \n"
