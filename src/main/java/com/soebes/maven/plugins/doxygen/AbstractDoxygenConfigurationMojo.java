@@ -804,7 +804,7 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * *.php3 *.inc *.m *.mm *.py *.f90
      *
      */
-    @Parameter(property="doxygen.filePatterns", defaultValue="*.doxygen *.doxy *.cpp *.cxx *.hpp *.hxx *.ipp *.ixx *.py *.java")
+    @Parameter(property="doxygen.filePatterns", defaultValue="*.c *.cc *.cxx *.cpp *.c++ *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh *.hxx *.hpp *.h++ *.idl *.odl *.cs *.php *.php3 *.inc *.m *.mm *.py *.f90")
     private String filePatterns;
 
     /**
