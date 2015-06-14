@@ -32,6 +32,10 @@
             date="XX.XX.2015"
             desc="Improvement Release">
             <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="13">Fixed links in documentation</action>
+            <action
                 due-to="Markus Karg"
                 dev="Karl Heinz Marbaise"
                 type="fix"
