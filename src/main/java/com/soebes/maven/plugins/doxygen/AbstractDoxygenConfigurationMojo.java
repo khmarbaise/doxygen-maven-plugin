@@ -781,7 +781,7 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * or directories with spaces.
      *
      */
-    @Parameter(property="doxygen.input")
+    @Parameter(property="doxygen.input", defaultValue="${project.build.sourceDirectory}")
     private String input;
 
     /**
