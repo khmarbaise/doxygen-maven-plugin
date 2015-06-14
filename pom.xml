@@ -34,8 +34,8 @@
     </licenses>
 
     <issueManagement>
-        <system>github</system>
-        <url>https://github.com/khmarbaise/doxygen-maven-plugin/issues</url>
+        <system>GitHub</system>
+        <url>https://github.com/khmarbaise/doxygen-maven-plugin/issues/</url>
     </issueManagement>
 
     <scm>
@@ -168,11 +168,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-changes-plugin</artifactId>
                 <version>${maven-changes-plugin.version}</version>
-                <configuration>
-                    <issueLinkTemplatePerSystem>
-                        <default>http://www.supose.org/issues/show/%ISSUE%</default>
-                    </issueLinkTemplatePerSystem>
-                </configuration>
                 <reportSets>
                     <reportSet>
                         <reports>
