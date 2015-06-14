@@ -59,7 +59,7 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
      * by quotes) that should identify the project.
      *
      */
-    @Parameter(property="doxygen.projectName", defaultValue="MIGRATION.PARENT")
+    @Parameter(property="doxygen.projectName", defaultValue="${project.name}")
     private String projectName;
 
     /**
