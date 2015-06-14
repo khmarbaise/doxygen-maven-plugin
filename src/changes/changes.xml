@@ -29,8 +29,36 @@
     <body>
         <release
             version="1.1.0"
-            date="01.01.2014"
-            desc="Bug Fix Release">
+            date="XX.XX.2015"
+            desc="Improvement Release">
+            <action
+                due-to="Markus Karg"
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="6">Removed obviously wrong default value.</action>
+            <action
+                due-to="Markus Karg"
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="8">Aligned default value with the doxygen default value for FILE_PATTERN.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="10">Cleaned up copyright headers.</action>
+            <action
+                due-to="Markus Karg"
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="5">Changed defaultValue from MIGRATION.PARENT to ${project.name}</action>
+            <action
+                due-to="Markus Karg"
+                dev="Karl Heinz Marbaise"
+                type="fix"
+                issue="7">Added defaultValue for input (doxygen.input) parameter.</action>
+            <action
+                dev="Karl Heinz Marbaise"
+                type="update"
+                issue="9">Upgraded parent to smpp 1.0.0</action>
             <action
                 dev="Karl Heinz Marbaise"
                 type="add">Changed java package according to the groupId.</action>
