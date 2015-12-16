@@ -60,7 +60,7 @@ public abstract class AbstractDoxygenMojo
 	 * 
 	 * @parameter expression="${doxygen.executable}" default-value="doxygen"
 	 */
-    @Parameter(property = "doxygen.executable", defaultValue = "doxgen")
+    @Parameter(property = "doxygen.executable", defaultValue = "doxygen")
 	private String executable;
 	
     /**
