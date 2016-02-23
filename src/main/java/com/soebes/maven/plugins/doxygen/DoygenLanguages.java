@@ -25,14 +25,44 @@ package com.soebes.maven.plugins.doxygen;
  * The languages which are supported by doxygen.
  * 
  * @author Karl Heinz Marbaise
- *
  */
-public enum DoygenLanguages {
-	English,
-	Afrikaans, Arabic, Brazilian, Catalan, Chinese, ChineseTraditional, 
-	Croatian, Czech, Danish, Dutch, Farsi, Finnish, French, German, Greek, 
-	Hungarian, Italian, Japanese, JapaneseEN, 
-	Korean, KoreanEN, Lithuanian, Norwegian, Macedonian, Persian, Polish, 
-	Portuguese, Romanian, Russian, Serbian, SerbianCyrilic, Slovak, Slovene, 
-	Spanish, Swedish, Ukrainian
+public enum DoygenLanguages
+{
+    English,
+    Afrikaans,
+    Arabic,
+    Brazilian,
+    Catalan,
+    Chinese,
+    ChineseTraditional,
+    Croatian,
+    Czech,
+    Danish,
+    Dutch,
+    Farsi,
+    Finnish,
+    French,
+    German,
+    Greek,
+    Hungarian,
+    Italian,
+    Japanese,
+    JapaneseEN,
+    Korean,
+    KoreanEN,
+    Lithuanian,
+    Norwegian,
+    Macedonian,
+    Persian,
+    Polish,
+    Portuguese,
+    Romanian,
+    Russian,
+    Serbian,
+    SerbianCyrilic,
+    Slovak,
+    Slovene,
+    Spanish,
+    Swedish,
+    Ukrainian
 }

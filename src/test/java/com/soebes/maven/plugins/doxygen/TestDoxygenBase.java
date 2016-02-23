@@ -29,33 +29,40 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TestDoxygenBase extends TestBase {
+public class TestDoxygenBase
+    extends TestBase
+{
 
-	protected HashMap<String, String> readConfigFile(File configurationFile) throws IOException {
-		HashMap<String, String> result = new HashMap<String, String>();
-		Pattern pattern = Pattern.compile("^(\\w+)\\s*\\=\\s+(.*)$");
-		BufferedReader in = new BufferedReader(
-				new FileReader(configurationFile));
-		String str;
-		while ((str = in.readLine()) != null) {
-			if (str.trim().length() == 0) {
-				// Ignore empty lines
-				continue;
-			}
-			if (str.matches("^#")) {
-				// Comment lines
-				continue;
-			}
-		
-			Matcher m = pattern.matcher(str);
-			if (m.matches()) {
-				String name = m.group(1).trim();
-				String value = m.group(2).trim();
-				result.put(name, value);
-			}
-		}
-		in.close();
-		return result;
-	}
+    protected HashMap<String, String> readConfigFile( File configurationFile )
+        throws IOException
+    {
+        HashMap<String, String> result = new HashMap<String, String>();
+        Pattern pattern = Pattern.compile( "^(\\w+)\\s*\\=\\s+(.*)$" );
+        BufferedReader in = new BufferedReader( new FileReader( configurationFile ) );
+        String str;
+        while ( ( str = in.readLine() ) != null )
+        {
+            if ( str.trim().length() == 0 )
+            {
+                // Ignore empty lines
+                continue;
+            }
+            if ( str.matches( "^#" ) )
+            {
+                // Comment lines
+                continue;
+            }
+
+            Matcher m = pattern.matcher( str );
+            if ( m.matches() )
+            {
+                String name = m.group( 1 ).trim();
+                String value = m.group( 2 ).trim();
+                result.put( name, value );
+            }
+        }
+        in.close();
+        return result;
+    }
 
 }
