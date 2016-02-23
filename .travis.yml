@@ -5,7 +5,7 @@ before_install:
   - sudo apt-get install doxygen
 # Enable container-based infrastructure
 # see http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-sudo: false
+#sudo: false
 jdk:
   - openjdk7
   - oraclejdk8
