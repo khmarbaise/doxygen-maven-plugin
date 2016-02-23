@@ -1,7 +1,8 @@
 # Doxygen Maven Plugin
 
-# Overview
-
+[![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/khmarbaise/doxygen-maven-plugin.svg?label=License)](http://www.apache.org/licenses/)
+[![Build Status](https://travis-ci.org/khmarbaise/doxygen-maven-plugin.svg?branch=master)](https://travis-ci.org/khmarbaise/doxygen-maven-plugin)
+[![Maven Central](https://img.shields.io/maven-central/v/com.soebes.maven.plugins/doxygen-maven-plugin.svg?label=Maven%20Central)](http://search.maven.org/#search%7Cga%7C1%7Cdoxygen-maven-plugin)
 
 ## License
 
