@@ -17,4 +17,5 @@ cache:
 # in script step.
 install: yes
 script:
-  - mvn -Prun-its clean verify
+  - "doxygen --version"
+  - "mvn -Prun-its clean verify"
