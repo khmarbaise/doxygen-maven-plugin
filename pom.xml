@@ -39,8 +39,8 @@
   </issueManagement>
 
   <scm>
-    <connection>scm:git:git@github.com:khmarbaise/doxygen-maven-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:khmarbaise/doxygen-maven-plugin.git</developerConnection>
+    <connection>scm:git:https://github.com/khmarbaise/doxygen-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/khmarbaise/doxygen-maven-plugin.git</developerConnection>
     <url>https://github.com/khmarbaise/doxygen-maven-plugin/</url>
   </scm>
 
@@ -58,17 +58,6 @@
       </roles>
     </developer>
   </developers>
-
-  <distributionManagement>
-    <repository>
-      <id>ossrh-staging</id>
-      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
-    <snapshotRepository>
-      <id>ossrh-snapshots</id>
-      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
 
   <dependencies>
     <!-- Maven Reporting -->
