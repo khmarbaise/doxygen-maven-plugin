@@ -70,18 +70,6 @@
     </snapshotRepository>
   </distributionManagement>
 
-  <mailingLists>
-    <mailingList>
-      <name>Maven Users List</name>
-      <subscribe>users-subscribe@maven.apache.org</subscribe>
-      <unsubscribe>users-unsubscribe@maven.apache.org</unsubscribe>
-      <post>users@maven.apache.org</post>
-      <archive>http://mail-archives.apache.org/mod_mbox/maven-users</archive>
-      <otherArchives>
-        <otherArchive>http://www.nabble.com/Maven---Users-f178.html</otherArchive>
-      </otherArchives>
-    </mailingList>
-  </mailingLists>
   <dependencies>
     <!-- Maven Reporting -->
     <dependency>
@@ -251,33 +239,6 @@
                     </extraArtifact>
                   </extraArtifacts>
                 </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
-      <id>release-sign-artifacts</id>
-      <activation>
-        <property>
-          <name>performRelease</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
               </execution>
             </executions>
           </plugin>
