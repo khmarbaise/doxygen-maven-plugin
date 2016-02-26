@@ -53,7 +53,6 @@ public abstract class AbstractDoxygenMojo
      * This defines the name and/or the absolute path to he doxygen executable. Usually you shouldn't change this, cause
      * the plugin will automatically search for the executable.
      * 
-     * @parameter expression="${doxygen.executable}" default-value="doxygen"
      */
     @Parameter( property = "doxygen.executable", defaultValue = "doxygen" )
     private String executable;
@@ -61,19 +60,12 @@ public abstract class AbstractDoxygenMojo
     /**
      * The current build session instance. This is used for toolchain manager API calls.
      *
-     * @parameter expression="${session}"
-     * @required
-     * @readonly
      */
-    @Component
+    @Parameter ( defaultValue = "${session}", required = true, readonly = true)
     private MavenSession session;
 
     /**
      * This is the basedir.
-     * 
-     * @parameter expression="${basedir}" default-value="${project.basedir}"
-     * @required
-     * @readonly
      */
     @Parameter( property = "basedir", defaultValue = "${project.basedir}", required = true, readonly = true )
     private File basedir;
@@ -81,9 +73,6 @@ public abstract class AbstractDoxygenMojo
     /**
      * This is the skip parameter to simply skip the doxygen generation part.
      * 
-     * @parameter expression="${skip}" default-value="false"
-     * @required
-     * @readonly
      */
     @Parameter( property = "skip", defaultValue = "false", required = true, readonly = true )
     private boolean skip;

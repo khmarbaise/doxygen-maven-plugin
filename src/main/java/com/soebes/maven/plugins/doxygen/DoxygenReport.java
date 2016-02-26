@@ -48,11 +48,6 @@ public class DoxygenReport
     implements MavenReport
 {
 
-    /**
-     * @parameter expression="${component.org.codehaus.doxia.site.renderer.SiteRenderer}"
-     * @required
-     * @readonly
-     */
     @Component
     private Renderer siteRenderer;
 	
