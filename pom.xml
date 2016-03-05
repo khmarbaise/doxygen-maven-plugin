@@ -12,7 +12,7 @@
   <groupId>com.soebes.maven.plugins</groupId>
   <artifactId>doxygen-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.1.0</version>
+  <version>1.1.1-SNAPSHOT</version>
 
   <name>Doxygen Maven Plugin</name>
   <description>The Doxygen Maven Plugin provides the ability to generate Doxygen documentation
@@ -49,7 +49,7 @@
     <connection>scm:git:https://github.com/khmarbaise/doxygen-maven-plugin.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/khmarbaise/doxygen-maven-plugin.git</developerConnection>
     <url>https://github.com/khmarbaise/doxygen-maven-plugin/</url>
-    <tag>doxygen-maven-plugin-1.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <developers>
