@@ -309,6 +309,10 @@ public abstract class AbstractDoxygenMojo
             addConfiguration( out, DoxygenParameters.HTML_HEADER, getHtmlHeader() );
             addConfiguration( out, DoxygenParameters.HTML_FOOTER, getHtmlFooter() );
             addConfiguration( out, DoxygenParameters.HTML_STYLESHEET, getHtmlStylesheet() );
+            addConfiguration( out, DoxygenParameters.HTML_EXTRA_STYLESHEET, getHtmlExtraStylesheet() );
+            addConfiguration( out, DoxygenParameters.HTML_COLORSTYLE_HUE, getHtmlColorStyleHue() );
+            addConfiguration( out, DoxygenParameters.HTML_COLORSTYLE_SAT, getHtmlColorStyleSat() );
+            addConfiguration( out, DoxygenParameters.HTML_COLORSTYLE_GAMMA, getHtmlColorStyleGamma() );
             addConfiguration( out, DoxygenParameters.HTML_ALIGN_MEMBERS, isHtmlAlignMembers() );
             addConfiguration( out, DoxygenParameters.HTML_DYNAMIC_SECTIONS, isHtmlDynamicSections() );
             addConfiguration( out, DoxygenParameters.GENERATE_DOCSET, isGenerateDocset() );
