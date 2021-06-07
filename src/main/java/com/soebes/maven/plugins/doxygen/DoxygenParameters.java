@@ -864,6 +864,19 @@ public enum DoxygenParameters {
 		DoxygenParameterType.STRING,
 		null
 	),
+	HTML_EXTRA_STYLESHEET(
+			"# The HTML_STYLESHEET tag can be used to specify a user-defined cascading style\n" +
+					"# sheet that is used by each HTML page. It can be used to fine-tune the look of\n" +
+					"# the HTML output. If left blank doxygen will generate a default style sheet.\n" +
+					"# See also section \"Doxygen usage\" for information on how to generate the style\n" +
+					"# sheet that doxygen normally uses.\n" +
+					"# Note: It is recommended to use HTML_EXTRA_STYLESHEET instead of this tag, as\n" +
+					"# it is more robust and this tag (HTML_STYLESHEET) will in the future become\n" +
+					"# obsolete.\n" +
+					"# This tag requires that the tag GENERATE_HTML is set to YES.",
+			DoxygenParameterType.STRING,
+			null
+	),
 	HTML_ALIGN_MEMBERS(
 			"# If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes, \n"
 		+	"# files or namespaces will be aligned in HTML using tables. If set to \n"

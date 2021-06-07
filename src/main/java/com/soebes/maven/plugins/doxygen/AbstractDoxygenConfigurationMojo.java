@@ -1088,6 +1088,21 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
     private String htmlStylesheet;
 
     /**
+     * The HTML_EXTRA_STYLESHEET tag can be used to specify additional user-defined
+     * cascading style sheets that are included after the standard style sheets
+     * created by doxygen. Using this option one can overrule certain style aspects.
+     * This is preferred over using HTML_STYLESHEET since it does not replace the
+     * standard style sheet and is therefore more robust against future updates.
+     * Doxygen will copy the style sheet files to the output directory.
+     * Note: The order of the extra style sheet files is of importance (e.g. the last
+     * style sheet in the list overrules the setting of the previous ones in the
+     * list). For an example see the documentation.
+     * This tag requires that the tag GENERATE_HTML is set to YES.
+     */
+    @Parameter(property="doxygen.htmlExtraStylesheet")
+    private String htmlExtraStylesheet;
+
+    /**
      * If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes,
      * files or namespaces will be aligned in HTML using tables. If set to NO a
      * bullet list will be used.
@@ -2864,6 +2879,14 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
 
     public void setHtmlStylesheet(String htmlStylesheet) {
         this.htmlStylesheet = htmlStylesheet;
+    }
+
+    public String getHtmlExtraStylesheet() {
+        return htmlExtraStylesheet;
+    }
+
+    public void setHtmlExtraStylesheet(String htmlExtraStylesheet) {
+        this.htmlExtraStylesheet = htmlExtraStylesheet;
     }
 
     public boolean isHtmlAlignMembers() {

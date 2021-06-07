@@ -1321,6 +1321,18 @@ public class DoxygenReportTest
     }
 
     @Test
+    public void htmlExtraStylesheetTest()
+            throws MavenReportException, IOException
+    {
+        dr.setHtmlExtraStylesheet( "ThisIsMoreThanEmpty" );
+        dr.buildConfigurationFile( resultConfigFile );
+        assertTrue( resultConfigFile.exists() );
+        HashMap<String, String> configList = readConfigFile( resultConfigFile );
+        assertTrue( configList.containsKey( "HTML_EXTRA_STYLESHEET" ) );
+        assertEquals( "ThisIsMoreThanEmpty", configList.get( "HTML_EXTRA_STYLESHEET" ) );
+    }
+
+    @Test
     public void htmlAlignMembersTest()
         throws MavenReportException, IOException
     {
