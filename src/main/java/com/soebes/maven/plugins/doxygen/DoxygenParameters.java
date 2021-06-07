@@ -877,6 +877,33 @@ public enum DoxygenParameters {
 			DoxygenParameterType.STRING,
 			null
 	),
+	HTML_COLORSTYLE_HUE("# The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. Doxygen\n" +
+			"# will adjust the colors in the style sheet and background images according to\n" +
+			"# this color. Hue is specified as an angle on a colorwheel, see\n" +
+			"# https://en.wikipedia.org/wiki/Hue for more information. For instance the value\n" +
+			"# 0 represents red, 60 is yellow, 120 is green, 180 is cyan, 240 is blue, 300\n" +
+			"# purple, and 360 is red again.\n" +
+			"# Minimum value: 0, maximum value: 359, default value: 220.\n" +
+			"# This tag requires that the tag GENERATE_HTML is set to YES.\n",
+			DoxygenParameterType.INTEGER,
+			"220"),
+	HTML_COLORSTYLE_SAT("# The HTML_COLORSTYLE_SAT tag controls the purity (or saturation) of the colors\n" +
+			"# in the HTML output. For a value of 0 the output will use grayscales only. A\n" +
+			"# value of 255 will produce the most vivid colors.\n" +
+			"# Minimum value: 0, maximum value: 255, default value: 100.\n" +
+			"# This tag requires that the tag GENERATE_HTML is set to YES.\n",
+			DoxygenParameterType.INTEGER,
+			"100"),
+	HTML_COLORSTYLE_GAMMA("# The HTML_COLORSTYLE_GAMMA tag controls the gamma correction applied to the\n" +
+			"# luminance component of the colors in the HTML output. Values below 100\n" +
+			"# gradually make the output lighter, whereas values above 100 make the output\n" +
+			"# darker. The value divided by 100 is the actual gamma applied, so 80 represents\n" +
+			"# a gamma of 0.8, The value 220 represents a gamma of 2.2, and 100 does not\n" +
+			"# change the gamma.\n" +
+			"# Minimum value: 40, maximum value: 240, default value: 80.\n" +
+			"# This tag requires that the tag GENERATE_HTML is set to YES.",
+			DoxygenParameterType.INTEGER,
+			"80"),
 	HTML_ALIGN_MEMBERS(
 			"# If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes, \n"
 		+	"# files or namespaces will be aligned in HTML using tables. If set to \n"

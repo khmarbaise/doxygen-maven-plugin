@@ -1333,6 +1333,42 @@ public class DoxygenReportTest
     }
 
     @Test
+    public void htmlColorStyleHueTest()
+            throws MavenReportException, IOException
+    {
+        dr.setHtmlColorStyleHue( "220" );
+        dr.buildConfigurationFile( resultConfigFile );
+        assertTrue( resultConfigFile.exists() );
+        HashMap<String, String> configList = readConfigFile( resultConfigFile );
+        assertTrue( configList.containsKey( "HTML_COLORSTYLE_HUE" ) );
+        assertEquals( "220", configList.get( "HTML_COLORSTYLE_HUE" ) );
+    }
+
+    @Test
+    public void htmlColorStyleSatTest()
+            throws MavenReportException, IOException
+    {
+        dr.setHtmlColorStyleSat( "110" );
+        dr.buildConfigurationFile( resultConfigFile );
+        assertTrue( resultConfigFile.exists() );
+        HashMap<String, String> configList = readConfigFile( resultConfigFile );
+        assertTrue( configList.containsKey( "HTML_COLORSTYLE_SAT" ) );
+        assertEquals( "110", configList.get( "HTML_COLORSTYLE_SAT" ) );
+    }
+
+    @Test
+    public void htmlColorStyleGammaTest()
+            throws MavenReportException, IOException
+    {
+        dr.setHtmlColorStyleGamma( "90" );
+        dr.buildConfigurationFile( resultConfigFile );
+        assertTrue( resultConfigFile.exists() );
+        HashMap<String, String> configList = readConfigFile( resultConfigFile );
+        assertTrue( configList.containsKey( "HTML_COLORSTYLE_GAMMA" ) );
+        assertEquals( "90", configList.get( "HTML_COLORSTYLE_GAMMA" ) );
+    }
+
+    @Test
     public void htmlAlignMembersTest()
         throws MavenReportException, IOException
     {

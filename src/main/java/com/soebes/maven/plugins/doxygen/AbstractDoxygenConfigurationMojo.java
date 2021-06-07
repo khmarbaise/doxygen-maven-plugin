@@ -1102,6 +1102,15 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
     @Parameter(property="doxygen.htmlExtraStylesheet")
     private String htmlExtraStylesheet;
 
+    @Parameter(property="doxygen.htmlColorStyleHue")
+    private String htmlColorStyleHue;
+
+    @Parameter(property="doxygen.htmlColorStyleSat")
+    private String htmlColorStyleSat;
+
+    @Parameter(property="doxygen.htmlColorStyleGamma")
+    private String htmlColorStyleGamma;
+
     /**
      * If the HTML_ALIGN_MEMBERS tag is set to YES, the members of classes,
      * files or namespaces will be aligned in HTML using tables. If set to NO a
@@ -2887,6 +2896,30 @@ public abstract class AbstractDoxygenConfigurationMojo extends AbstractMojo {
 
     public void setHtmlExtraStylesheet(String htmlExtraStylesheet) {
         this.htmlExtraStylesheet = htmlExtraStylesheet;
+    }
+
+    public String getHtmlColorStyleHue() {
+        return htmlColorStyleHue;
+    }
+
+    public void setHtmlColorStyleHue(String htmlColorStyleHue) {
+        this.htmlColorStyleHue = htmlColorStyleHue;
+    }
+
+    public String getHtmlColorStyleSat() {
+        return htmlColorStyleSat;
+    }
+
+    public void setHtmlColorStyleSat(String htmlColorStyleSat) {
+        this.htmlColorStyleSat = htmlColorStyleSat;
+    }
+
+    public String getHtmlColorStyleGamma() {
+        return htmlColorStyleGamma;
+    }
+
+    public void setHtmlColorStyleGamma(String htmlColorStyleGamma) {
+        this.htmlColorStyleGamma = htmlColorStyleGamma;
     }
 
     public boolean isHtmlAlignMembers() {
